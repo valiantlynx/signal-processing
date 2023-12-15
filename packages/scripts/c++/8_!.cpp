@@ -15,8 +15,8 @@ public:
     LinkedList() : head(nullptr), listSize(0) {}
     ~LinkedList();
 
-    void push_back(int value);
-    size_t size() const { return listSize; }
+    void push_back(const int value);
+    size_t size();
     int& at(size_t index);
     void remove(size_t index);
 
@@ -24,6 +24,9 @@ private:
     Node* head;
     size_t listSize;
 };
+
+// ... rest of the LinkedList member function implementations ...
+
 
 LinkedList::~LinkedList() {
     Node* current = head;
@@ -57,6 +60,10 @@ int& LinkedList::at(size_t index) {
         current = current->next;
     }
     return current->value;
+}
+
+size_t LinkedList::size() {
+    return listSize;
 }
 
 void LinkedList::remove(size_t index) {
