@@ -135,7 +135,7 @@ int main(void)
             double delta_output[NUM_OUTPUTS];
             for (int j = 0; j < NUM_OUTPUTS; j++)
             {
-                double error = -(train_outputs[i][j] - output_layer[j]);
+                double error = (train_outputs[i][j] - output_layer[j]);
                 delta_output[j] = error * derivetive_sigmoid(output_layer[j]);
             }
 
@@ -146,7 +146,7 @@ int main(void)
                 double error = 0.0f;
                 for (int k = 0; k < NUM_OUTPUTS; k++)
                 {
-                    error += delta_output[k] * output_weights[j][k];
+                    error += delta_output[k] * output_weights[k][j];
                 }
 
                 delta_hidden[j] = error * derivetive_sigmoid(hidden_layer[j]);
