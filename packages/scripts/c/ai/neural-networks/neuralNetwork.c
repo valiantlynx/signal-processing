@@ -216,5 +216,44 @@ int main(void)
             }
             fputs("]\n", stdout);
 
+
+
+        // save the model
+       FILE *file = fopen("model.txt", "w");
+if (file == NULL) {
+    perror("Error opening file");
+    return -1;
+}
+
+// Saving hidden weights
+for (int i = 0; i < NUM_INPUTS; i++) {
+    for (int j = 0; j < NUM_HIDDEN; j++) {
+        fprintf(file, "%lf ", hidden_weights[i][j]);
+    }
+    fprintf(file, "\n");
+}
+
+// Saving output weights
+for (int i = 0; i < NUM_HIDDEN; i++) {
+    for (int j = 0; j < NUM_OUTPUTS; j++) {
+        fprintf(file, "%lf ", output_weights[i][j]);
+    }
+    fprintf(file, "\n");
+}
+
+// Saving hidden biases
+for (int i = 0; i < NUM_HIDDEN; i++) {
+    fprintf(file, "%lf ", hidden_layer_bias[i]);
+}
+fprintf(file, "\n");
+
+// Saving output biases
+for (int i = 0; i < NUM_OUTPUTS; i++) {
+    fprintf(file, "%lf ", output_layer_bias[i]);
+}
+fprintf(file, "\n");
+
+fclose(file);
+
     return 0;
 }
