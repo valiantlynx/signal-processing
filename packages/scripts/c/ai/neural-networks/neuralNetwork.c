@@ -9,10 +9,12 @@ double sigmoid(double x)
     return 1.0f / (1.0f + exp(-x));
 }
 
-double derivetive_sigmoid(double x)
+double derivative_sigmoid(double x)
 {
-    return x / (1.0f - x);
+    double sig = sigmoid(x);
+    return sig * (1.0 - sig);
 }
+
 
 void shuffle(int *array, size_t n)
 {
@@ -127,7 +129,6 @@ int main(void)
                 output_layer[j] = sigmoid(activation);
             }
 
-            printf("epoch: %d pattern: %d\n", epoch, i);
             printf("input: %g %g output: %g expected: %g\n", train_inputs[i][0], train_inputs[i][1], output_layer[0], train_outputs[i][0]);
 
             // backward propagation
@@ -137,7 +138,7 @@ int main(void)
             for (int j = 0; j < NUM_OUTPUTS; j++)
             {
                 double error = (train_outputs[i][j] - output_layer[j]);
-                delta_output[j] = error * derivetive_sigmoid(output_layer[j]);
+                delta_output[j] = error * derivative_sigmoid(output_layer[j]);
             }
 
             // compute change in hidden weights
@@ -147,10 +148,10 @@ int main(void)
                 double error = 0.0f;
                 for (int k = 0; k < NUM_OUTPUTS; k++)
                 {
-                    error += delta_output[k] * output_weights[k][j];
+                    error += delta_output[k] * output_weights[j][k];
                 }
 
-                delta_hidden[j] = error * derivetive_sigmoid(hidden_layer[j]);
+                delta_hidden[j] = error * derivative_sigmoid(hidden_layer[j]);
             }
 
             // apply change in output weights
