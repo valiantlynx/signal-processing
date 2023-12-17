@@ -168,7 +168,7 @@ int main(void)
                 hidden_layer_bias[j] += learning_rate * delta_hidden[j];
                 for (int k = 0; k < NUM_INPUTS; k++)
                 {
-                    hidden_weights[k][j] += learning_rate * hidden_layer[k] * delta_hidden[j];
+                    hidden_weights[k][j] += learning_rate * train_inputs[i][k] * delta_hidden[j];
                 }
             }
 
