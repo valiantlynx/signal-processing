@@ -6,15 +6,13 @@
 // sum of inputs * weights + bias = x
 double sigmoid(double x)
 {
-    return 1.0f / (1.0f + exp(-x));
+    return 1 / (1 + exp(-x));
 }
 
 double derivative_sigmoid(double x)
 {
-    double sig = sigmoid(x);
-    return sig * (1.0 - sig);
+    return x * (1 - x);
 }
-
 
 void shuffle(int *array, size_t n)
 {
