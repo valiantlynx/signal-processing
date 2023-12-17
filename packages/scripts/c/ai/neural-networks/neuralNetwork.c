@@ -127,8 +127,7 @@ int main(void)
                 output_layer[j] = sigmoid(activation);
             }
 
-            printf("input: %g %g output: %g expected: %g\n", train_inputs[i][0], train_inputs[i][1], output_layer[0], train_outputs[i][0]);
-
+            printf("input: %g %g output: %g expected: %g result: %g\n", train_inputs[i][0], train_inputs[i][1], output_layer[0], train_outputs[i][0], output_layer[0] > 0.5f ? 1.0f : 0.0f);
             // backward propagation
 
             // compute change in output weights
