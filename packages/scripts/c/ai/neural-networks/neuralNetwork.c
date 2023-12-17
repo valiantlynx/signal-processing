@@ -127,7 +127,8 @@ int main(void)
                 output_layer[j] = sigmoid(activation);
             }
 
-            printf("input: %g %g expected-output: %g predicted-output: %g \n", train_inputs[i][0], train_inputs[i][1], train_outputs[i][0], output_layer[0]);
+            printf("epoch: %d pattern: %d\n", epoch, i);
+            printf("input: %g %g output: %g expected: %g\n", train_inputs[i][0], train_inputs[i][1], output_layer[0], train_outputs[i][0]);
 
             // backward propagation
 
@@ -171,9 +172,12 @@ int main(void)
                     hidden_weights[k][j] += learning_rate * train_inputs[i][k] * delta_hidden[j];
                 }
             }
+            
+        }
+    }
 
 
-            // print final weights after training
+    // print final weights after training
             fputs("Final hidden weights\n[ ", stdout);
             for (int j = 0; j < NUM_INPUTS; j++)
             {
@@ -213,9 +217,6 @@ int main(void)
                 printf("%f ", output_layer_bias[j]);
             }
             fputs("]\n", stdout);
-            
-        }
-    }
 
     return 0;
 }
