@@ -1,5 +1,5 @@
 {
-    "name": "todolist-v1.0.0",
+    "name": "todolist",
     "version": "1.0.0",
     "description": "to do list ver 1",
     "main": "app.js",
@@ -8,9 +8,6 @@
     },
     "author": "valiantlynx",
     "license": "ISC",
-    "engines": {
-        "node": "16.15.0"
-    },
     "dependencies": {
         "body-parser": "^1.20.0",
         "ejs": "^3.1.8",
