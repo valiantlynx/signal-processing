@@ -10,7 +10,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"deploy-test": "yarn format && yarn lint && yarn build && yarn preview"
+		"deploy-test": "yarn format && yarn lint && yarn build && yarn preview",
+		"generate-pwa-assets": "npx @vite-pwa/assets-generator --preset minimal static/logo.svg"
 	},
 	"devDependencies": {
 		"@iconify/svelte": "^3.1.4",
