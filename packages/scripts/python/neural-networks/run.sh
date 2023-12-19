@@ -1,4 +1,5 @@
 python -m venv venv
-source venv/bin/activate
+source venv/Scripts/activate
 pip install -r requirements.txt
-python main.py
+python ReLU_activation_function.py
+

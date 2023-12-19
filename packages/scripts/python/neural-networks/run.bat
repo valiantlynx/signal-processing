@@ -4,4 +4,4 @@ call venv\Scripts\activate
 call python -m pip install --upgrade pip
 
 call pip install -r requirements.txt
-call python main.py
+call python ReLU_activation_function.py

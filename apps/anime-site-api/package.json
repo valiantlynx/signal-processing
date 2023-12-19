@@ -1,10 +1,11 @@
 {
-  "name": "vercelapi",
+  "name": "anime-site-api",
   "version": "1.0.0",
   "description": "",
   "main": "api/index.js",
   "scripts": {
     "start": "nodemon api",
+    "docker": "docker-compose up -d --build anime-site-api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
