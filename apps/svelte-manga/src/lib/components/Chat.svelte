@@ -114,26 +114,37 @@
 
 	<div class="divider px-4 "></div>
 
-	<div class="border-t border-primary pt-4 px-4">
-		<form on:submit|preventDefault={sendMessage} class="space-x-2 flex items-center">
-			<ProfileModal />
-			<input
-			type="text"
-			placeholder={$page.data.user ? 'Type a message...' : 'Login to chat... ------>'}
-			id="comment"
-			required
-			minlength="1"
-			bind:value={newMessage}
-			disabled={loading}
-			class="input input-bordered input-primary flex-grow"
+	<div class="border-t border-primary pt-4	">
+		<div class="flex flex-wrap w-full">
+			<div class="left-content mb-2 ml-2 w-full lg:w-1/4  order-1 flex">
+				<ProfileModal />
+				{#if $page.data.user}
+					<div class="flex-grow ml-2 mb-2"> 
+						<h3 class="text-lg font-bold break-all">{$page.data.user?.username}</h3>
+						<p class="text-sm break-all">{$page.data.user?.email}</p>
+					</div>
+				{/if}
+			</div>
+			<div class="right-content w-full lg:w-3/4 order-2">
+				<form on:submit|preventDefault={sendMessage} class=" flex items-center">
 			
-			/>
-			{#if $page.data.user}
-				<button type="submit" disabled={loading} class="btn btn-primary"> Send </button>
-			{:else}
-				<a href="/login" type="submit" class="btn btn-primary"> Login </a>
-			{/if}
-		</form>
+					<input
+					type="text"
+					placeholder={$page.data.user ? 'Type a message...' : '<------ Login to chat 💬'}
+					id="comment"
+					required
+					minlength="1"
+					bind:value={newMessage}
+					disabled={loading}
+					class="input input-bordered input-primary flex-grow"
+					
+					/>
+					{#if $page.data.user}
+						<button type="submit" disabled={loading} class="btn btn-primary"> Send </button>
+					{/if}
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
 

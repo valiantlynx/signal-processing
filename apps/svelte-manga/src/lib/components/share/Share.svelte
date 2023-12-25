@@ -6,7 +6,7 @@
 	export let url = $page.url.origin;
 	export let text = 'Check out this manga website. it tracks your reading progress!';
 	export let hashtags = 'manga';
-	export let image = 'https://www.animevariant.com/api/logo?width=280&height=280&color=black'
+	export let image = `${$page.url.origin}/api/logo?width=280&height=280&color=black`
 
 	let twitterUrl;
 	let facebookUrl;
@@ -20,7 +20,7 @@
 </script>
 
 <div class="flex flex-wrap justify-center py-2 w-full gap-2">
-	<a href={facebookUrl} target="_blank" class="bg-blue-200">
+	<a href={facebookUrl} target="_blank">
 	<ButtonWithIcon>
 		<i slot="icon" class="fa fa-facebook text-blue-600" />
 		

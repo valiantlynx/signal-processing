@@ -82,9 +82,11 @@ async function createRecord(event) {
 				const urlmanga = `/manga/${params.id}`;
 
 				const responsemanga = await fetch(
-					import.meta.env.VITE_HOST_URL + `/api/manga/${params.id}?url=${urlmanga}`
+					url.origin + `/api/manga/${params.id}?url=${urlmanga}`
 				);
 				const datamanga = await responsemanga.json();
+
+			
 
 				// Manga doesn't exist, create it
 				for (let i = 0; i < datamanga.author.length; i++) {

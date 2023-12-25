@@ -27,7 +27,6 @@ export const actions = {
 	chapters: async (event) => {
 		const data = await event.request.formData();
 		const page = data.get('page');
-		console.log('page chapters', page);
 		try {
 			const { id } = event.params;
 			const url = `/manga/${id}`;

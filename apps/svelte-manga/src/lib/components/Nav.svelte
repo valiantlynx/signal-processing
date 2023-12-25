@@ -25,7 +25,7 @@
 </div>
 
 <!-- Large Devices Layout -->
-<div class="navbar bg-base-300 hidden sm:flex">
+<div class="navbar bg-base-300 hidden sm:flex"   id="title-bar">
 	<div class="flex-1">
 		<a class="btn btn-ghost normal-case text-xl" href="/">{$page.data.siteName}</a>
 		<ThemeChanger />
@@ -38,3 +38,10 @@
 		<ProfileModal />
 	</div>
 </div>
+
+<style>
+	#title-bar {
+	  -webkit-app-region: drag;
+	}
+  </style>
+  

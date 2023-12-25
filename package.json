@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "turbo build",
+    "start": "turbo start",
     "dev": "turbo run dev --concurrency=11",
     "python": "turbo run python",
     "lint": "turbo lint",
@@ -11,7 +12,10 @@
     "format": "turbo format",
     "preview": "turbo preview",
     "package": "turbo package",
-    "release": "turbo release"
+    "release": "turbo release",
+    "docker": "turbo docker",
+    "pull": "turbo pull",
+    "push": "turbo push"
   },
   "devDependencies": {
     "@valiantlynx/tsconfig": "^0.0.25",
@@ -23,7 +27,8 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "packages/scripts/python/*"
+    "packages/scripts/python/*",
+    "packages/scripts/python/school/math/*"
   ],
   "packageManager": "yarn@1.22.19",
   "usePackagemanager": "yarn@1.22.19 or pnpm@8.6.10 or npm@8.19.4",

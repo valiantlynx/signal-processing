@@ -10,7 +10,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"deploy-test": "yarn format && yarn lint && yarn build && yarn preview"
+		"deploy-test": "yarn format && yarn lint && yarn build && yarn preview",
+		"generate-pwa-assets": "npx @vite-pwa/assets-generator --preset minimal static/logo.svg"
 	},
 	"devDependencies": {
 		"@iconify/svelte": "^3.1.4",
@@ -22,9 +23,9 @@
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"@valiantlynx/eslint-config-custom": "0.0.1",
-		"@valiantlynx/general-config": "^0.0.18",
+		"@valiantlynx/general-config": "^0.0.20",
 		"@valiantlynx/image": "^0.0.2",
-		"@valiantlynx/svelte-ui": "^0.0.18",
+		"@valiantlynx/svelte-ui": "^0.0.19",
 		"@valiantlynx/tailwind-config": "0.0.9",
 		"@valiantlynx/tsconfig": "^0.0.25",
 		"autoprefixer": "^10.4.14",
@@ -56,6 +57,7 @@
 		"@sveltejs/amp": "^1.0.2",
 		"@types/node-schedule": "^2.1.4",
 		"dropcss": "^1.0.16",
+		"langchain": "^0.0.197-rc.1",
 		"node-schedule": "^2.1.1"
 	}
 }
