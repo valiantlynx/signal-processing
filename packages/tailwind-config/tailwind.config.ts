@@ -26,6 +26,8 @@ const customTheme = {
   const allThemes = theme.map(({ name }: any) => name);
   allThemes.unshift(customTheme);
 
+  console.log("allThemes------> ",  allThemes);
+
 const config: Config = {
 	mode: 'jit',
 	content: ['./src/**/*.{html,js,svelte,ts}'],
@@ -33,7 +35,7 @@ const config: Config = {
 	daisyui: { 
 		themes: allThemes,
 		styled: true, 
-		darkTheme: "dracula",
+		darkTheme: "night",
 		utils: true,
 		logs: false
 	 }

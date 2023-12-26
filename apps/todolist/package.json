@@ -1,6 +1,7 @@
 {
     "name": "todolist",
     "version": "1.0.0",
+    "private": true,
     "description": "to do list ver 1",
     "main": "app.js",
     "scripts": {
