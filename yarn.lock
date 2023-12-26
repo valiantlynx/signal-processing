@@ -5273,6 +5273,11 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
+"@valiantlynx/general-config@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/general-config/-/general-config-0.0.14.tgz#18450f26bb0c8e98d5c9b538fa969508b5efb9ea"
+  integrity sha512-N1+t+nQnO2JEkdjZjyooUrsG15GL/dHxYyDBYiezskDsN6znFa1cozbf7bBFadQBPBTRanBzb//sv7xBqj5pHw==
+
 "@valiantlynx/general-config@^0.0.18":
   version "0.0.18"
   resolved "https://registry.yarnpkg.com/@valiantlynx/general-config/-/general-config-0.0.18.tgz#3dae57b03364429fe9ccfea589f1686dae1f91a4"
@@ -5294,6 +5299,15 @@
   integrity sha512-KuA/GL5EfbqEYCk00mizbM0txyaS81w7Jaa9K36YFTcYMRfvj4jjXq6i4WfZXqB3cydrJObYbjmGPyHjgsWOCg==
   dependencies:
     leaflet "^1.9.4"
+
+"@valiantlynx/tailwind-config@0.0.9", "@valiantlynx/tailwind-config@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/tailwind-config/-/tailwind-config-0.0.9.tgz#fea3e2198259793a5c7a550b433812fd7d1c348f"
+  integrity sha512-MpjZoo15MhvseTRQUjTV0jnpI0VAqgtYNrnBbnff9QGlfL8+ke1LF5fiF68NVxATqILPKn8sUg/XAFzqLC47Vg==
+  dependencies:
+    "@valiantlynx/general-config" "^0.0.14"
+    daisyui "^3.6.1"
+    tailwindcss "^3.2.4"
 
 "@vercel/nft@^0.23.0":
   version "0.23.1"

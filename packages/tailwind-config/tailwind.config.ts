@@ -26,7 +26,7 @@ const customTheme = {
   const allThemes = theme.map(({ name }: any) => name);
   allThemes.unshift(customTheme);
 
-  console.log(" allThemes------> ",  allThemes);
+  console.log("allThemes------> ",  allThemes);
 
 const config: Config = {
 	mode: 'jit',
