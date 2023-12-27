@@ -6,6 +6,8 @@
 
   const blog = $page.data.blog;
 
+  console.log("---->", blog)
+
   const saveData = (data) => {
 	try {
 		console.log(data);
@@ -49,7 +51,7 @@
 		{#if $page.data.user}
 		{#if $page.data.user.id === blog.author}
 		<ValiantRichText
-		intailData={blog.content_object}
+		initialData={blog.content_object}
 		 />
 		<button 
 		class="btn btn-primary"
