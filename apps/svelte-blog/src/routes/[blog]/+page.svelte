@@ -63,14 +63,14 @@
 		<h3 class="text-xl text-accent md:text-2xl lg:text-3xl font-bold mb-4">
 			you can not edit this blog post. as you are not the author of this blog post. Create your own blog post <a href="/blogs/new" class="link link-primary">here</a>
 		</h3>
-		<ValiantRichText viewMode={true} />
+		<ValiantRichText initialData={blog.content_object} viewMode={true} />
 		{/if}
 
 {:else}
 <h3 class="text-xl text-accent md:text-2xl lg:text-3xl font-bold mb-4">
 			It is possible to edit this blog post. Please <a href="/login" class="link link-primary">login</a> to edit.
 		</h3>
-<ValiantRichText viewMode={true} />
+<ValiantRichText initialData={blog.content_object} viewMode={true} />
 		{/if}
     </div>
 
