@@ -41,9 +41,9 @@
 	if (browser)
 		currentTheme =
 			localStorage.getItem('theme') ??
-			(window.matchMedia('(prefers-color-scheme: dark)').matches
-				? theme?.[1].name
-				: theme[0].name ?? theme[0].name);
+			(window.matchMedia('(prefers-color-scheme: lofi)').matches
+				? theme?.[0].name
+				: theme[1].name ?? theme[11].name);
 </script>
 
 <div id="change-theme" class="dropdown">
