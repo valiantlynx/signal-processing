@@ -2,16 +2,20 @@ import type { ThemeConfig, DateConfig } from "../types/general";
 
 export const theme: ThemeConfig = [
   {
+    name: "lofi",
+    text: "🎶 Lo-Fi"
+  },
+  {
+    name: "cyberpunk",
+    text: "🤖 Cyberpunk",
+  },
+  {
     name: "synthwave",
     text: "🌃 Synthwave",
   },
   {
     name: "night",
     text: "🌃 Night",
-  },
-  {
-    name: "lofi",
-    text: "🎶 Lo-Fi",
   },
   {
     name: "christmas",
@@ -33,11 +37,6 @@ export const theme: ThemeConfig = [
     name: "dracula",
     text: "🧛 Dracula",
   },
-  {
-    name: "cyberpunk",
-    text: "🤖 Cyberpunk",
-  },
-
   {
     name: "business",
     text: "🏢 Business",
