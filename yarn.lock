@@ -5278,6 +5278,11 @@
   resolved "https://registry.yarnpkg.com/@valiantlynx/general-config/-/general-config-0.0.14.tgz#18450f26bb0c8e98d5c9b538fa969508b5efb9ea"
   integrity sha512-N1+t+nQnO2JEkdjZjyooUrsG15GL/dHxYyDBYiezskDsN6znFa1cozbf7bBFadQBPBTRanBzb//sv7xBqj5pHw==
 
+"@valiantlynx/general-config@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/general-config/-/general-config-0.0.20.tgz#992eafc724fcbfa476b2f42d15716b0fa43b3249"
+  integrity sha512-peVAkip+oFyQ0ArlCOFRzwamUSWLU6gu0W1I44Zq/Ju6R7Vnw6J7K0fhXn76U3U1XbOzDtjyIRW+AIV8l/AzYA==
+
 "@valiantlynx/image@^0.0.2":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@valiantlynx/image/-/image-0.0.2.tgz"
@@ -5299,10 +5304,10 @@
     svelte-highlight "^7.4.1"
     svelte-select "^5.7.0"
 
-"@valiantlynx/svelte-ui@0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-ui/-/svelte-ui-0.0.19.tgz#c5e2f644710cc9a321171091df23bf0a19f256cb"
-  integrity sha512-DBmu1dA4h7N0fKAfaV7o4BnipRJ8nTIwVaYdMBdL2+EQJjhu0shuqda4v+OuxOGMZ8PHa0kiwcE3TTbWATVwuw==
+"@valiantlynx/svelte-ui@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-ui/-/svelte-ui-0.0.20.tgz#938c14eaa7a458f97b027a5f4ffd3baca2316b20"
+  integrity sha512-lnhvA/ZJB4J1g9izgaX/6tddgsdZp6LQs/B4GqabBUe1UmGgbi6AC9GQbGayfYuOb7jnHSpryPOTXTnlB8chyA==
   dependencies:
     svelte-loading-spinners "^0.3.4"
 
