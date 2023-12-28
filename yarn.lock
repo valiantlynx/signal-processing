@@ -5295,15 +5295,6 @@
   dependencies:
     leaflet "^1.9.4"
 
-"@valiantlynx/svelte-rich-text@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-rich-text/-/svelte-rich-text-0.0.4.tgz#b1b100abe499c50fbc966bfa4bbd7fdb7e949978"
-  integrity sha512-A91xAjX5CgX9CfMexL+E1FDWVbEjWWxN8dfLp0VYhEBXcE8wRJU4Ckcrdj1foEJpBZzRJP4vxddSM495kCSPHA==
-  dependencies:
-    short-uuid "^4.2.2"
-    svelte-highlight "^7.4.1"
-    svelte-select "^5.7.0"
-
 "@valiantlynx/svelte-ui@^0.0.20":
   version "0.0.20"
   resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-ui/-/svelte-ui-0.0.20.tgz#938c14eaa7a458f97b027a5f4ffd3baca2316b20"
