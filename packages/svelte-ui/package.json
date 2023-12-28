@@ -1,6 +1,6 @@
 {
 	"name": "@valiantlynx/svelte-ui",
-	"version": "0.0.22",
+	"version": "0.0.23",
 	"publishConfig": {
 		"access": "public"
 	},
@@ -53,7 +53,6 @@
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.26.2",
-		"@iconify/svelte": "^3.1.4",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
 		"@sveltejs/package": "^2.0.0",
@@ -78,6 +77,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"svelte-loading-spinners": "^0.3.4"
+		"svelte-loading-spinners": "^0.3.4",
+		"@iconify/svelte": "^3.1.4"
 	}
 }
