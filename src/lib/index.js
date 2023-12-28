@@ -15,6 +15,8 @@ import Rectangle from './components/Rectangle.svelte';
 import ScaleControl from './components/ScaleControl.svelte';
 import TileLayer from './components/TileLayer.svelte';
 import Tooltip from './components/Tooltip.svelte';
+import Route from './components/Route.svelte';
+import Fullscreen from './components/Fullscreen.svelte';
 
 import LeafletRotatedMarkersExtension from './extensions/RotatedMarkers';
 
@@ -35,6 +37,8 @@ export {
 	Rectangle,
 	ScaleControl,
 	TileLayer,
-	Tooltip
+	Tooltip,
+	Route,
+	Fullscreen
 };
 export default LeafletMap;
