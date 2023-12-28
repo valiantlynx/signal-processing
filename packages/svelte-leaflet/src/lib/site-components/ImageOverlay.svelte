@@ -1,5 +1,5 @@
 <script>
-	import { LeafletMap, ImageOverlay, TileLayer } from 'svelte-leafletjs';
+	import { LeafletMap, ImageOverlay, TileLayer } from '$lib/index';
 
 	const mapOptions = {
 		center: [1.364917, 103.822872],
@@ -28,7 +28,7 @@
 		<LeafletMap options={mapOptions}>
 			<TileLayer url={tileUrl} options={tileLayerOptions} />
 			<ImageOverlay
-				imageUrl="dpsri_70km_2021082110500000dBR.dpsri.png"
+				imageUrl="/dpsri_70km_2021082110500000dBR.dpsri.png"
 				{bounds}
 				options={imageOverlayOptions}
 			/>
