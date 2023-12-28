@@ -5295,6 +5295,24 @@
   dependencies:
     leaflet "^1.9.4"
 
+"@valiantlynx/svelte-rich-text@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-rich-text/-/svelte-rich-text-0.0.5.tgz#94c956cc69eea039f993ec6beead84f9b8b531ee"
+  integrity sha512-3X4ZLpZdynORGnEIhhWC7yW9AKXqHFkz6UGrdz+8CKqozts7RMXQ4Zuadwf1fim4wOrI/Xa77DFvymMw3/K4Gw==
+  dependencies:
+    short-uuid "^4.2.2"
+    svelte-highlight "^7.4.1"
+    svelte-select "^5.7.0"
+
+"@valiantlynx/svelte-rich-text@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-rich-text/-/svelte-rich-text-0.0.6.tgz#f9d38d1a846463862eb22c170b91d325ef02aed1"
+  integrity sha512-xM2/u7eq5cSRKzINUbI3OTAJxg1a1wNtWMJ3GwMJU7sgTGt1KbsHq9BtRCvNFnMnmoWdlqnv8y+l7ycbEKHcyQ==
+  dependencies:
+    short-uuid "^4.2.2"
+    svelte-highlight "^7.4.1"
+    svelte-select "^5.7.0"
+
 "@valiantlynx/svelte-ui@^0.0.20":
   version "0.0.20"
   resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-ui/-/svelte-ui-0.0.20.tgz#938c14eaa7a458f97b027a5f4ffd3baca2316b20"
