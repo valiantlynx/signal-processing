@@ -6,8 +6,6 @@
 
   const blog = $page.data.blog;
 
-  console.log("---->", blog)
-
   const saveData = (data) => {
 	try {
 		console.log(data);
