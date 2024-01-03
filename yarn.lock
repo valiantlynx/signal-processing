@@ -5288,27 +5288,39 @@
   resolved "https://registry.npmjs.org/@valiantlynx/image/-/image-0.0.2.tgz"
   integrity sha512-cthhGEd+g4FHfqrszd/cD6ubbJdQdWvHloviWraIifdp/xcmp9KvyTXJQKo4XoFKDFt9hXzsm2DQHy2hbXyWOw==
 
-"@valiantlynx/svelte-leaflet@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-leaflet/-/svelte-leaflet-0.0.6.tgz#902a44d830476b8b781e6c171cc31e3be417ee8c"
-  integrity sha512-KuA/GL5EfbqEYCk00mizbM0txyaS81w7Jaa9K36YFTcYMRfvj4jjXq6i4WfZXqB3cydrJObYbjmGPyHjgsWOCg==
+"@valiantlynx/svelte-leaflet@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-leaflet/-/svelte-leaflet-0.0.14.tgz#e872220fcaa4f59bb808a93a955096820241e7cb"
+  integrity sha512-jrqs8UE++sbwMVs1LRNOrS8ooi/d3N5yNRJetu85YG34WJdv4z7WzIkzn9+2i43NW008DGMDoLK36aiqcCxJnA==
   dependencies:
+    "@valiantlynx/svelte-rich-text" "^0.0.9"
+    "@valiantlynx/svelte-ui" "0.0.23"
     leaflet "^1.9.4"
+    leaflet.fullscreen "^3.0.0"
 
-"@valiantlynx/svelte-rich-text@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-rich-text/-/svelte-rich-text-0.0.5.tgz#94c956cc69eea039f993ec6beead84f9b8b531ee"
-  integrity sha512-3X4ZLpZdynORGnEIhhWC7yW9AKXqHFkz6UGrdz+8CKqozts7RMXQ4Zuadwf1fim4wOrI/Xa77DFvymMw3/K4Gw==
+"@valiantlynx/svelte-rich-text@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-rich-text/-/svelte-rich-text-0.0.9.tgz#c7514d873bc85245a4ea522336a4e9f87dc39574"
+  integrity sha512-zywNnbEx1i929Ayzlt5K4lHndfBpxIxAd6zOgGNncEVctVD1dvtKdL9mAJyO/XnERs8ci+fuXLyt1lQAaCvfow==
   dependencies:
     short-uuid "^4.2.2"
     svelte-highlight "^7.4.1"
     svelte-select "^5.7.0"
 
-"@valiantlynx/svelte-ui@0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-ui/-/svelte-ui-0.0.22.tgz#dabe11857f3491357772bc2dbb4862b4684f0a79"
-  integrity sha512-vdLw1MTVUjezA7dcVvU/5BmiP+G5Qk7vAyPffM9QDb3PkYKZXD4OO2fBRRNfECndcmyeLwi0c/FEd+I8+sdHaw==
+"@valiantlynx/svelte-rich-text@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-rich-text/-/svelte-rich-text-0.2.3.tgz#a2e12a6ed8fd241b32d2627234fb6c52d62a1474"
+  integrity sha512-DTB6/AGuC64CcXvdwnvh+RJ+dP1JzRI98j9mO7gUXeQqt+5X3ThQEi6Em0kIDquvcM191hurnHlEx/8OOBtUPQ==
   dependencies:
+    short-uuid "^4.2.2"
+    svelte-select "^5.7.0"
+
+"@valiantlynx/svelte-ui@0.0.24":
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/@valiantlynx/svelte-ui/-/svelte-ui-0.0.24.tgz#080583fdba034b8d84cb6bf28024df2a73c51df8"
+  integrity sha512-Vu/5MTXk1D7cws5ehfDfsU7atgo5yGi2PyIiKQI8aTlrSU1Eq6PGzLYANWmuir76+nSuMGIyYeToFWqufh9Eiw==
+  dependencies:
+    "@iconify/svelte" "^3.1.4"
     svelte-loading-spinners "^0.3.4"
 
 "@valiantlynx/svelte-ui@^0.0.20":
