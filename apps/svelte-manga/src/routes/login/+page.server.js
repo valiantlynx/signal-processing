@@ -43,10 +43,10 @@ export const actions = {
 		const authProviderRedirect = `${googleAuthProvider?.authUrl}${redirectUrl}&googleAuthState=${googleAuthProvider?.state}`;
 		// Save the state and verifier in a cookie
 		const state = googleAuthProvider.state;
-        const verifier = googleAuthProvider.codeVerifier
+		const verifier = googleAuthProvider.codeVerifier;
 
-		event.cookies.set('state',state);
-        event.cookies.set('verifier',verifier);
+		event.cookies.set('state', state);
+		event.cookies.set('verifier', verifier);
 
 		throw redirect(302, authProviderRedirect);
 	}

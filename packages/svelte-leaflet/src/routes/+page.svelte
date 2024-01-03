@@ -41,6 +41,7 @@
 	<!-- Prism.js JavaScript -->
 	<!-- Prism.js JavaScript -->
 	<!-- Prism.js JavaScript -->
+	<!-- Prism.js JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 	<!-- Prism.js theme CSS -->
 	<link
@@ -55,10 +56,8 @@
 		<p class="text-2xl mt-6 text-gray-300 animate-bounce">Map Your Ideas into Reality</p>
 	</section>
 
-	<section class="p-16 ">
-		<h2 class="text-4xl font-semibold text-center mb-12">
-			Unleash the Power of Maps
-		</h2>
+	<section class="p-16">
+		<h2 class="text-4xl font-semibold text-center mb-12">Unleash the Power of Maps</h2>
 		<div class="grid md:grid-cols-3 gap-8 text-center">
 			<div
 				class="bg-gray-900 shadow-xl rounded-xl p-10 transform hover:scale-105 transition duration-500"

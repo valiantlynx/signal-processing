@@ -235,44 +235,43 @@ export const genMangaPosts = async (page: number, origin: string) => {
 	const mangaPosts: any = [];
 	const url = origin + `/api/manga?page=${page}`;
 
-	
-		const response = await fetch(url, {
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-				'Content-Type': 'application/json'
-			}
-		});
-	
-		const data = await response.json();
-		
-		const mangas = data.mangas;
-		
-		if (mangas) {
-			mangas.forEach((manga: any) => {
-				const imageUrl = removeQueryParameters(manga.img, ['width', 'height']);
-				mangaPosts.push({
-					url: manga.src,
-					image: imageUrl,
-					title: manga.title,
-					description: manga.description
-				});
-			});
-		} else {
-			console.error('Failed to fetch mangas');
+	const response = await fetch(url, {
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/json'
 		}
+	});
+
+	const data = await response.json();
+
+	const mangas = data.mangas;
+
+	if (mangas) {
+		mangas.forEach((manga: any) => {
+			const imageUrl = removeQueryParameters(manga.img, ['width', 'height']);
+			mangaPosts.push({
+				url: manga.src,
+				image: imageUrl,
+				title: manga.title,
+				description: manga.description
+			});
+		});
+	} else {
+		console.error('Failed to fetch mangas');
+	}
 	return mangaPosts;
 };
 
 // Function to remove specified query parameters from a URL
 const removeQueryParameters = (url, paramsToRemove) => {
 	const parsedUrl = new URL(url);
-  
-	paramsToRemove.forEach(param => {
-	  parsedUrl.searchParams.delete(param);
+
+	paramsToRemove.forEach((param) => {
+		parsedUrl.searchParams.delete(param);
 	});
-  
+
 	return parsedUrl.toString();
-  };
+};
 
 export const serializeNonPOJOs = (obj: any) => {
 	// // if the object is not a POJO, then serialize it
@@ -284,8 +283,6 @@ export const serializeNonPOJOs = (obj: any) => {
 
 	return structuredClone(obj);
 };
-
-
 
 export const render = async (page: number, url: string): Promise<string> =>
 	`<?xml version='1.0' encoding='utf-8'?>
@@ -323,7 +320,7 @@ export const render = async (page: number, url: string): Promise<string> =>
     
   </urlset>`.trim();
 
-  // for pages 1 - 53 make a main sitemap that shows the pages of the sitemap
+// for pages 1 - 53 make a main sitemap that shows the pages of the sitemap
 export const renderMainSitemap = (url: string) => {
 	const mainSitemapContent = `<?xml version='1.0' encoding='UTF-8'?>
 
@@ -346,8 +343,6 @@ export const renderMainSitemap = (url: string) => {
 
 	return mainSitemapContent;
 };
-
-
 
 //temp fix for googleapis
 const google: any = {};

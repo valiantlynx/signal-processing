@@ -34,7 +34,7 @@
 
 	function updateContent() {
 		const data = getData(); // Get data from ValiantRichText
-		contentData.set(JSON.stringify(data)); 
+		contentData.set(JSON.stringify(data));
 	}
 
 	const crumbs = [
