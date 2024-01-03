@@ -1,6 +1,5 @@
 import { serializeNonPOJOs } from '$lib/utils/api';
 
-
 let currentChapterIndex;
 let manga;
 export const load = async (event) => {
@@ -81,12 +80,8 @@ async function createRecord(event) {
 			if (existingMangaList.items.length === 0) {
 				const urlmanga = `/manga/${params.id}`;
 
-				const responsemanga = await fetch(
-					url.origin + `/api/manga/${params.id}?url=${urlmanga}`
-				);
+				const responsemanga = await fetch(url.origin + `/api/manga/${params.id}?url=${urlmanga}`);
 				const datamanga = await responsemanga.json();
-
-			
 
 				// Manga doesn't exist, create it
 				for (let i = 0; i < datamanga.author.length; i++) {
@@ -158,12 +153,10 @@ async function createRecord(event) {
 async function getSimilarManga(event) {
 	const { locals } = event;
 	// get similar manga, depending on the genre of the manga
-	
+
 	const similarMangaList = await serializeNonPOJOs(
-	await locals.pb.collection('mangas').getList(1, 8, {
-		
-	})
+		await locals.pb.collection('mangas').getList(1, 8, {})
 	);
 
-	return similarMangaList.items
+	return similarMangaList.items;
 }

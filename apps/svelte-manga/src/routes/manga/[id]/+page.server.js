@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { serializeNonPOJOs } from '$lib/utils/api';
 
-
 export const load = async (event) => {
 	const { id } = event.params;
 
@@ -61,12 +60,10 @@ function generatePageNumbers(manga) {
 async function getSimilarManga(event) {
 	const { locals } = event;
 	// get similar manga, depending on the genre of the manga
-	
+
 	const similarMangaList = await serializeNonPOJOs(
-	await locals.pb.collection('mangas').getList(1, 8, {
-		
-	})
+		await locals.pb.collection('mangas').getList(1, 8, {})
 	);
 
-	return similarMangaList.items
+	return similarMangaList.items;
 }

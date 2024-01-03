@@ -15,7 +15,7 @@ export const load = async (event) => {
 			isSmallDevice
 		};
 	}
-	
+
 	const data = {
 		user: undefined,
 		sites: await Sites(event),
@@ -27,10 +27,8 @@ export const load = async (event) => {
 
 const Sites = async (event) => {
 	// you can also fetch all records at once via getFullList
-const records = serializeNonPOJOs(
-	await event.locals.pb.collection('sites').getFullList()
-	);
-const adtxt = records.find((item: any) => item.site.includes(event.url.origin));
-	
+	const records = serializeNonPOJOs(await event.locals.pb.collection('sites').getFullList());
+	const adtxt = records.find((item: any) => item.site.includes(event.url.origin));
+
 	return adtxt;
 };

@@ -1,13 +1,13 @@
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {
-  const width = Number(url.searchParams.get('width')) || 265;
-  const height = Number(url.searchParams.get('height')) || 268;
-  const color = url.searchParams.get('color') || '#000';
+	const width = Number(url.searchParams.get('width')) || 265;
+	const height = Number(url.searchParams.get('height')) || 268;
+	const color = url.searchParams.get('color') || '#000';
 
-  try {
-    // SVG template with placeholders
-    const svgTemplate = `
+	try {
+		// SVG template with placeholders
+		const svgTemplate = `
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="${width}.000000pt" height="${height}.000000pt" viewBox="0 0 265.000000 268.000000" preserveAspectRatio="xMidYMid meet">
 	<g transform="translate(0.000000,268.000000) scale(0.100000,-0.100000)" fill="${color}" stroke="none">
 		<path d="M1295 2516 c-6 -8 -32 -26 -60 -41 -27 -15 -90 -51 -140 -80 -49 -29
@@ -36,16 +36,16 @@ export const GET: RequestHandler = async ({ url }) => {
       </svg>
     `;
 
-    return new Response(svgTemplate, {
-      headers: {
-        'Content-Type': 'image/svg+xml',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'public, s-maxage=31536000', // 1 year cache
-      },
-    });
-  } catch (error) {
-    return new Response(JSON.stringify({ message: 'Failed to generate SVG', error }), {
-      status: 500,
-    });
-  }
+		return new Response(svgTemplate, {
+			headers: {
+				'Content-Type': 'image/svg+xml',
+				'Access-Control-Allow-Origin': '*',
+				'Cache-Control': 'public, s-maxage=31536000' // 1 year cache
+			}
+		});
+	} catch (error) {
+		return new Response(JSON.stringify({ message: 'Failed to generate SVG', error }), {
+			status: 500
+		});
+	}
 };

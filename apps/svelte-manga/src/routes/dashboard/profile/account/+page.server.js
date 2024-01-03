@@ -19,9 +19,7 @@ export const actions = {
 		const data = Object.fromEntries(await request.formData());
 
 		try {
-			await locals.pb
-				.collection('users')
-				.getFirstListItem(`username="${data.username}"`);
+			await locals.pb.collection('users').getFirstListItem(`username="${data.username}"`);
 		} catch (err) {
 			if (err.status === 404) {
 				try {

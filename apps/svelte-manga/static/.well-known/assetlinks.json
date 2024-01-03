@@ -12,8 +12,8 @@
 	{
 		"relation": ["delegate_permission/common.query_webapk"],
 		"target": {
-		  "namespace": "web",
-		  "site": "https://www.minfuel.com/manifest.json"
+			"namespace": "web",
+			"site": "https://www.minfuel.com/manifest.json"
 		}
-	  }
+	}
 ]

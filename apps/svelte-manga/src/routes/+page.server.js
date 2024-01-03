@@ -18,8 +18,8 @@ export const actions = {
 		const page = data.get('page');
 		console.log('page', page);
 		try {
-			const popularMangas = await Popular(event.locals, page); 
-			console.log('popularMangas', popularMangas); 
+			const popularMangas = await Popular(event.locals, page);
+			console.log('popularMangas', popularMangas);
 			return {
 				popularMangas
 			};
@@ -27,7 +27,6 @@ export const actions = {
 			console.log('err', err);
 			throw error(err.status, err.message);
 		}
-		
 	},
 	latest: async (event) => {
 		const data = await event.request.formData();
@@ -41,7 +40,6 @@ export const actions = {
 			console.log('err', err);
 			throw error(err.status, err.message);
 		}
-		
 	}
 };
 
@@ -62,10 +60,9 @@ const Popular = async (locals, pageNo) => {
 };
 
 const Latest = async (event, pageNo) => {
-	const url = event.url.origin + "/api/manga?page=" + pageNo
+	const url = event.url.origin + '/api/manga?page=' + pageNo;
 	const res = await event.fetch(url);
 	const data = await res.json();
-	
+
 	return data.mangas;
 };
-

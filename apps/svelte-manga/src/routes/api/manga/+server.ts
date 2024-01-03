@@ -50,8 +50,8 @@ export const GET: RequestHandler = async ({ url }) => {
 			const titleId = titleElement.text();
 			const content = {
 				title: titleElement.text(),
-				img: url.origin + "/api" + imgElement.attr('src') + "?width=200&height=300",
- 				latestChapter: chaptersElement.text(),
+				img: url.origin + '/api' + imgElement.attr('src') + '?width=200&height=300',
+				latestChapter: chaptersElement.text(),
 				rating: ratingElement.text(),
 				src,
 				id,
