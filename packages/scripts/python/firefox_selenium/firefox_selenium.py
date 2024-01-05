@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.service import Service
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
 
 # Configure logging for better tracking of the script's execution and issues
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -16,18 +16,32 @@ service = Service(r'.\geckodriver-v0.34.0-win64\geckodriver.exe')
 driver = webdriver.Firefox(service=service)
 
 # Personal data for the Gmail account to be created
-your_first_name = "Jhon"
+your_first_name = "Jhonny"
 your_last_name = "Doemen"
 your_username = "Jhon12Doemen"
 your_birthday = "02 3 1999"
-your_gender = "1"  # Gender options: 1 for Female, 2 for Male, 3 for Prefer not to say, 4 for Custom
+your_gender = "1"
 your_password = "x,nscldsj123...FDKZ"
+
+# Function to perform clicks with retries
+def click_element(locator):
+    retries = 3
+    while retries > 0:
+        try:
+            element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(locator))
+            element.click()
+            return
+        except ElementClickInterceptedException:
+            logging.warning("Element was not clickable. Retrying...")
+            retries -= 1
+            if retries == 0:
+                raise
 
 try:
     # Navigate to the Gmail account creation page
     driver.get("https://accounts.google.com/signup/v2/createaccount?flowName=GlifWebSignIn&flowEntry=SignUp")
-
-    # Locate and fill the first and last name fields
+    https://accounts.google.com/lifecycle/steps/signup/name?
+    # Fill in the first and last name fields
     first_name = driver.find_element(By.NAME, "firstName")
     last_name = driver.find_element(By.NAME, "lastName")
     first_name.clear()
@@ -36,17 +50,14 @@ try:
     last_name.send_keys(your_last_name)
 
     # Click the 'Next' button to proceed
-    next_button = driver.find_element(By.CLASS_NAME, "VfPpkd-vQzf8d")
-    next_button.click()
+    click_element((By.CLASS_NAME, "VfPpkd-vQzf8d"))
 
-    # Explicit wait for birthday fields to be visible and interactable
+    # Wait for birthday fields to be visible and interactable
     wait = WebDriverWait(driver, 20)
     wait.until(EC.visibility_of_element_located((By.NAME, "day")))
 
-    # Split the birthday string to separate day, month, and year
-    birthday_elements = your_birthday.split()
-
     # Select the birthday month, day, and year
+    birthday_elements = your_birthday.split()
     month_dropdown = Select(driver.find_element(By.ID, "month"))
     month_dropdown.select_by_value(birthday_elements[1])
     day_field = driver.find_element(By.ID, "day")
@@ -61,17 +72,17 @@ try:
     gender_dropdown.select_by_value(your_gender)
 
     # Click the 'Next' button to proceed
-    next_button = driver.find_element(By.CLASS_NAME, "VfPpkd-vQzf8d")
-    next_button.click()
+    click_element((By.CLASS_NAME, "VfPpkd-vQzf8d"))
 
     # Create a custom email username
-    wait.until(EC.element_to_be_clickable((By.ID, "selectioni3"))).click()
-    wait.until(EC.element_to_be_clickable((By.NAME, "Username"))).send_keys(your_username)
-    
+    click_element((By.ID, "selectioni3"))
+    username_field = driver.find_element(By.NAME, "Username")
+    username_field.clear()
+    username_field.send_keys(your_username)
+
     # Click the 'Next' button to proceed
-    next_button = driver.find_element(By.CLASS_NAME, "VfPpkd-vQzf8d")
-    next_button.click()
-    
+    click_element((By.CLASS_NAME, "VfPpkd-vQzf8d"))
+
     # Set and confirm the account password
     password_field = wait.until(EC.visibility_of_element_located((By.NAME, "Passwd")))
     password_field.clear()
@@ -79,15 +90,13 @@ try:
     password_confirmation_field = driver.find_element(By.NAME, "PasswdAgain")
     password_confirmation_field.clear()
     password_confirmation_field.send_keys(your_password)
-    
-  
 
     # Skip adding phone number and recovery email
     for _ in range(2):
-        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "button span.VfPpkd-vQzf8d"))).click()
+        click_element((By.CSS_SELECTOR, "button span.VfPpkd-vQzf8d"))
 
     # Agree to Google's terms and privacy
-    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "button span.VfPpkd-vQzf8d"))).click()
+    click_element((By.CSS_SELECTOR, "button span.VfPpkd-vQzf8d"))
 
     # Close the browser after account creation
     driver.quit()
@@ -95,13 +104,16 @@ try:
     # Log the successful creation of the account
     logging.info("Your Gmail successfully created: {\ngmail: %s@gmail.com\npassword: %s\n}", your_username, your_password)
 
-# Catch specific exceptions and log errors
 except NoSuchElementException as e:
     logging.error("Element not found in the page: %s", e)
     driver.quit()
 
 except TimeoutException as e:
     logging.error("Loading took too much time: %s", e)
+    driver.quit()
+
+except ElementClickInterceptedException as e:
+    logging.error("Unable to click on the element: %s", e)
   
 
 except Exception as e:
