@@ -119,7 +119,7 @@
 	<Share
 	title={data.title + ' ' + $page.params.chapterid + ' ' + $page.url.hostname}
 	url={$page.url.href}
-	image={data?.images[0].imageUrl}
+	image={data?.images[1].imageUrl}
 	text={`${data.title} ${$page.params.chapterid}free online, high quality, manga scans, manga scan`}
 	hashtags="manga, anime, art, manga online, manga free online, manga free online, manga high quality, manga scans, manga scan"
 
