@@ -64,3 +64,5 @@ export const latest: any = writable(latestmanga);
 // oauth
 export const state = writable(null);
 export const verifier = writable(null);
+
+export const authStore = writable(null);
