@@ -14,8 +14,7 @@
 	{#if $page.data.user?.role.includes('admin')}
 		<a href="/dashboard/admin"><SideBarIcon tooltip="Admin" icon="bx:bx-shield" /></a>
 		<a href="/dashboard/upload"><SideBarIcon tooltip="Upload" icon="ph:upload-bold" /></a>
-	{/if}
-	{#if $page.data.user?.role.includes('creator')}
+	{:else if $page.data.user?.role.includes('creator')}
 	<a href="/dashboard/upload"><SideBarIcon tooltip="Upload" icon="ph:upload-bold" /></a>
 	{/if}
 
