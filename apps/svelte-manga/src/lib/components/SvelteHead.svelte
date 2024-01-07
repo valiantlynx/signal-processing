@@ -2,7 +2,7 @@
     import { page } from '$app/stores';
     export let title = $page.data.siteName
     export let image = "/twitter-image.png"
-    export let keywords = "manga, read manga, read manga online, request manga, manga reading website, populate manga, manga online, manga, manga details, manga chapters, read manga free, manga free, read free manga, read free manga online, manga reader, manga viewer, manga scans, {$page.data.siteName}, {$page.url.origin} ";
+    export let keywords = "manga, read manga, read manga online, request manga, manga reading website, populate manga, manga online, manga, manga details, manga chapters, read manga free, manga free, read free manga, read free manga online, manga reader, manga viewer, manga scans" + $page.data.siteName + $page.url.origin;
     export let description = 'Read the latest manga online for free at AnimeVariant, update fastest, most full, synthesized 24h free with high-quality images and be the first one to publish new chapters.';
 </script>
 
