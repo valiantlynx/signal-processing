@@ -10,13 +10,14 @@
 <footer class="footer footer-center p-10 bg-base-300 text-base-content rounded mt-auto">
 	<a href="/" class="p-1">
 		{#if !$page.url.isSmallDevice}
-				<img src={logo} alt="{$page.data.siteName} logo"  class="w-20" />
+				<img src={logo} alt="{$page.data.siteName} logo"  class="w-80" />
 		{/if}
 </a>
 	<div class="grid grid-flow-col gap-4">
 		<a href="/about" class="link link-hover">About us</a>
 		<a href="/contact" class="link link-hover">Contact</a>
 		<a href="/privacy-policy" class="link link-hover">Privacy</a>
+		<a href="/sitemap.xml" class="link link-hover">Sitemap</a>
 	</div>
 	<div>
 		<div class="grid grid-flow-col gap-4">
