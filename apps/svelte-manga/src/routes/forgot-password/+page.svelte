@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>forgot password - valiantlynx</title>
+	<title>forgot password</title>
 </svelte:head>
 
 <ForgotPassword />
