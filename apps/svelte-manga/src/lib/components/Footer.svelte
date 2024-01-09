@@ -33,6 +33,6 @@
 		</div>
 	</div>
 	<div>
-		<p>Copyright © {new Date().getFullYear()} - All right reserved by {site.site.company}</p>
+		<p>Copyright © {new Date().getFullYear()} - All right reserved by {$page.data.siteName}</p>
 	</div>
 </footer>
