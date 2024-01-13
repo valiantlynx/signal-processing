@@ -40,6 +40,7 @@ for sentence in sentences:
 for sentence, vector in sentence_vectors.items():
     vector_store.add_vector(sentence, vector)
     
+    
 # search for the most similar sentence
 query_sentence = "I like kittens"
 query_vector = np.zeros(len(vocabulary))
