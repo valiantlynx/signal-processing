@@ -18,3 +18,5 @@ num2 = input("input the second number: ")
 operation = input(f"Please choose the operation: \n1. add\n2. subtract\n3. multiply\n4. divide")
 
 # do the operation
+Calculate = Calculator(num1, num2)
+Calculate.add()
