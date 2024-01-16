@@ -21,8 +21,17 @@ num1 = int(input("input the first number: "))
 num2 = int(input("input the second number: "))
 
 # input from user for operation
-operation = input(f"Please choose the operation: \n1. add\n2. subtract\n3. multiply\n4. divide")
+operation = int(input(f"Please choose the operation: \n1. add\n2. subtract\n3. multiply\n4. divide\n"))
 
 # do the operation
 Calculate = Calculator(num1, num2)
-print(Calculate.add())
+if operation == 1:
+    print("Result:", Calculate.add())
+elif operation == 2:
+    print("Result:", Calculate.subtract())
+elif operation == 3:
+    print("Result:",Calculate.multiply())
+elif operation == 4:
+    print("Result:", Calculate.divide())
+else: 
+    print("Invalid operation")
