@@ -8,15 +8,21 @@ class Calculator:
     
     def add(self):
         return  self.num1 + self.num2
+    def subtract(self):
+        return  self.num1 - self.num2
+    def multiply(self):
+        return  self.num1 * self.num2
+    def divide(self):
+        return  self.num1 / self.num2
 
 # input from user for two numbers
 print("Welcome to the basic calculator?")
-num1 = input("input the first number: ")
-num2 = input("input the second number: ")
+num1 = int(input("input the first number: "))
+num2 = int(input("input the second number: "))
 
 # input from user for operation
 operation = input(f"Please choose the operation: \n1. add\n2. subtract\n3. multiply\n4. divide")
 
 # do the operation
 Calculate = Calculator(num1, num2)
-Calculate.add()
+print(Calculate.add())
