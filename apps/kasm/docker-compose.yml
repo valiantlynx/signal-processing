@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  firefox:
+    ports:
+        - '6911:6901' #change 6901 as necessary. eg. '6901:6901', '6902:6901', '6903:6901'
+    environment:
+        - VNC_PW=pineapple #change as desired
+    shm_size: '512m' #change per your needs. eg. '512m', '1gb', '2gb'
+    image: 'kasmweb/firefox:1.9.0' #change the image to your desired image
+    restart: always
+
+  chrome:
+    ports:
+    - '6911:6901' #change 6901 as necessary. eg. '6901:6901', '6902:6901', '6903:6901'
+    environment:
+        - VNC_PW=pineapple #change as desired
+    shm_size: '512m' #change per your needs. eg. '512m', '1gb', '2gb'
+    image: 'kasmweb/chrome:1.14.0-rolling' #change the image to your desired image
+    restart: always
