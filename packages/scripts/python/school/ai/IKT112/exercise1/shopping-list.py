@@ -6,7 +6,7 @@ class ShoppingList:
         pass
     
     def add_item(self, item):
-        print('Added item')
+        print('Added item', item)
         
     def get_all_items(self):
         print('All items')
@@ -14,6 +14,10 @@ class ShoppingList:
     
 shopping_list = ShoppingList()
 option = 1
-while option == 1:
-    option = input("What would you like to do?\n1. add item\n2. get all items\n")
+if option == 1:
+    shopping_list.add_item("thingy")
+    while option == 1:
+        option = int(input("What would you like to do?\n1. add item\n2. get all items\n")) 
+elif option == 2:
+    shopping_list.get_all_items()
     
