@@ -1,0 +1,19 @@
+# Task: Write a program that allows the user to add items to a shopping list. The user can add as many items as they want and then print the entire list.14
+
+# class withe add to list and get list function
+class ShoppingList:
+    def __init__(self):
+        pass
+    
+    def add_item(self, item):
+        print('Added item')
+        
+    def get_all_items(self):
+        print('All items')
+    
+    
+shopping_list = ShoppingList()
+option = 1
+while option == 1:
+    option = input("What would you like to do?\n1. add item\n2. get all items\n")
+    
