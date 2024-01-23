@@ -15,8 +15,8 @@ class ShoppingList:
 shopping_list = ShoppingList()
 option = 1
 if option == 1:
-    shopping_list.add_item("thingy")
     while option == 1:
+        shopping_list.add_item("thingy")
         option = int(input("What would you like to do?\n1. add item\n2. get all items\n")) 
 elif option == 2:
     shopping_list.get_all_items()
