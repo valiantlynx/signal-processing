@@ -9,7 +9,7 @@ class ShoppingList:
         print('Added item', item)
         
     def get_all_items(self):
-        print('All items')
+        print('Got all items')
     
     
 shopping_list = ShoppingList()
