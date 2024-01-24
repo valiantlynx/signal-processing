@@ -6,13 +6,8 @@ RUN apt-get update && apt-get install -y \
     tar \
     sudo 
 
-# Install Docker
-RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
-    sh get-docker.sh
-
-
 # test if docker are installed
-RUN docker -v && echo docker ps -a
+RUN docker -v && docker ps -a
 
 # Download and install Kasm Workspaces
 WORKDIR /tmp

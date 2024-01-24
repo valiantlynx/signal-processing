@@ -10,15 +10,9 @@ services:
     volumes:
       - ./kasm:/config
       - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    privileged: true
     environment:
       - ADMIN_PASS=amazonawS3a7abb
       - ALLOW_INSECURE_HTTP=true
     restart: always
-
-  docker:
-    image: docker:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    privileged: true
-    depends_on:
-      - kasm
