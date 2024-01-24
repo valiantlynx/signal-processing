@@ -1,13 +1,11 @@
+# Use an Ubuntu base image
 FROM ubuntu:latest
 
 # Install necessary dependencies
 RUN apt-get update && apt-get install -y \
     curl \
     tar \
-    sudo 
-
-# test if docker are installed
-RUN docker -v && docker ps -a
+    sudo
 
 # Download and install Kasm Workspaces
 WORKDIR /tmp

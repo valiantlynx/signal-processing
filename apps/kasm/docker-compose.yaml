@@ -6,13 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8080:443"
     volumes:
       - ./kasm:/config
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
-    privileged: true
+      - /var/run/docker.sock:/var/run/docker.sock  # Share Docker socket from host
     environment:
       - ADMIN_PASS=amazonawS3a7abb
       - ALLOW_INSECURE_HTTP=true
     restart: always
+    privileged: true
