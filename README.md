@@ -92,3 +92,41 @@ yarn publish:packages // this will publish all packages that are not private
 ```
 
 free svg icons: https://www.svgrepo.com/svg/122485/car-placeholder
+
+
+
+Kasm UI Login Credentials
+
+------------------------------------
+  username: admin@kasm.local
+  password: AkMe6YHYqhMPX
+------------------------------------
+  username: user@kasm.local
+  password: cYEKUucyE6WjB
+------------------------------------
+
+Kasm Database Credentials
+------------------------------------
+  username: kasmapp
+  password: 9sfV0yHRigy9IyuMAh5n
+------------------------------------
+
+Kasm Redis Credentials
+------------------------------------
+  password: LA5EXvzADgRqocHBTe0J
+------------------------------------
+
+Kasm Manager Token
+------------------------------------
+  password: 7IgC7IPEPFgsDvK6Q8ol
+------------------------------------
+
+Kasm Guac Token
+------------------------------------
+  password: qGGiIOlrbSXo3A1iaCRhLM
+------------------------------------
+
+Service Registration Token
+------------------------------------
+  password: 9tGSauaLhAXMVaOmuXw6
+------------------------------------
