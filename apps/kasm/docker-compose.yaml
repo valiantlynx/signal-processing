@@ -9,7 +9,6 @@ services:
       - "8080:443"
     volumes:
       - ./kasm:/config
-      - /var/run/docker.sock:/var/run/docker.sock  # Share Docker socket from host
     environment:
       - ADMIN_PASS=amazonawS3a7abb
       - ALLOW_INSECURE_HTTP=true
