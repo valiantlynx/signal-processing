@@ -2,6 +2,35 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define colors for the code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Define the style for the code listing
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codepurple},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{blue},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
 \geometry{a4paper, margin=1in}
 
 \title{Exercise 3}
@@ -26,8 +55,26 @@ Substitute into the equation: \(f_0 n T = \frac{k}{128}\).
 
 Solve for \(k\):
 \[ n = \frac{k}{(125 \times 0.0005) \times 128} \]
+\[ n = \frac{k}{0.016} \]
+\[ k = 0.016n \]
 
-Values of \(n\) are integers. Let's find the values of \(k\). 
+Since \(k\) must be an integer, let \(n\) take integer values. Therefore,
+to get this numbers this student  used the following simple python code:
+\begin{lstlisting}[language=Python, style=pythonstyle, caption={print the array of k values}]
+    # Given parameters
+    f0 = 125  # Hz
+    T = 0.0005  # s
+    N = 128
+    
+    # Solve for k
+    k_values = [n * N // (f0 * T * 128) for n in range(N)]
+    
+    print(k_values)
+\end{lstlisting}
+These values represent the indices in the DFT where the corresponding \(X(k)\) will be different from 0.\\
+\(k\) can take on integer values \(0, 16, 32, \ldots, 2016\)
+
+
 
 \textbf{b) What is the frequency resolution, i.e., the frequency distance between the calculated values in a 128-point DFT? Suppose the sequence is sampled with 2000 Hz.}
 
@@ -88,5 +135,16 @@ The frequency components present are at multiples of 125 Hz: -500 Hz, -375 Hz, -
 \textbf{c) Suppose \(x_1(n)\) is a sampled version of \(x_1(t)\) and \(x_1(t)\) is low pass limited to \(\frac{\text{fs}}{2}\). Write the expression for \(x(t)\) from what you found in a) and b) above.}
 
 Since \(x_1(t)\) is low pass limited to \(\frac{\text{fs}}{2}\), the frequency components present in \(x(t)\) are the same as in \(x(n)\). Therefore, \(x(t)\) can be expressed as a sum of sinusoids with frequencies at multiples of 125 Hz.
+
+The expression for \(x(t)\) is given by:
+\[ x(t) = \sum_{k=0}^{7} X_1(k) \cdot e^{j \frac{2\pi}{8}kt} \]
+Substitute the calculated values of \(X_1(k)\):
+\[ x(t) = 8 \cdot e^{j \frac{2\pi}{8} \cdot 0 \cdot t} + 8 \cdot e^{j \frac{2\pi}{8} \cdot 1 \cdot t} + \ldots + 8 \cdot e^{j \frac{2\pi}{8} \cdot 7 \cdot t} \]
+
+Simplify the expression based on the frequencies calculated in part b):
+
+\[ x(t) = 8 + 8 \cdot e^{j \frac{2\pi}{8} \cdot 1 \cdot t} + \ldots + 8 \cdot e^{j \frac{2\pi}{8} \cdot 7 \cdot t} \]
+
+This expression represents the sampled signal \(x_1(n)\) in the continuous-time domain.
 
 \end{document}
