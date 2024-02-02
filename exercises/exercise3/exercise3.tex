@@ -4,60 +4,89 @@
 \usepackage{geometry}
 \geometry{a4paper, margin=1in}
 
-\title{Exercise 2}
+\title{Exercise 3}
 \author{Gormery K. Wanjiru}
 \date{\today}
 
 \begin{document}
 
 \maketitle
+\section*{Problem 1}
 
-\section*{Question 1}
-Suppose you have a mechanical clock that has a minute hand, but no hour hand. You take a photograph of the clock when the minute hand points at 16:00 AM and then take additional photos every 55 minutes. Upon showing those photos, in time order, to someone:
-\begin{enumerate}
-    \item What would that person think about the direction of motion of the minute hand as time advances?
-    \begin{enumerate}
-        \item They would think that time is moving backwards. Every time you take a photo, the minute hand would point to a number five minutes less than the earlier one.
-        \item Upon showing a person the images in time order it would appear that the minute hand is going counter-clockwise.
-    \end{enumerate}
-    \item How often would you take photos, measured in photos/hour so that the successive photos show proper (true) clockwise minute-hand rotation?
-    \begin{enumerate}
-        \item You would have to take at least 3 or more photos/hour.
-        \item Thinking of the hour as 1 period, you need at least 2 samples in each period to capture the true clockwise minute hand rotation.
-    \end{enumerate}
-\end{enumerate}
+\textbf{a) A signal \(x_1(t) = \cos(2 \pi f_0 t)\) where \(f_0 = 125\) Hz, is sampled with spacing \(T = 0.5\) ms between the samples, and the first sample is taken at \(t = 0\). Suppose we calculate a 128-point DFT of the first 128 samples of \(x_1(t)\). For what values of \(k\), will \(X(k)\) be different from 0?}
 
-\section*{Question 2}
-Assume we sampled a continuous \( x(t) \) signal and obtained 103 time domain samples. What important parameter is missing in order to analyze \( x(t) \)?
-\begin{enumerate}
-    \item The important parameter missing in order to analyze \( x(t) \) is the sampling rate.
-    \item Without the sampling rate, we know we took 103 samples, but we have no idea over what period of time those samples were taken, which limits our ability to analyze the signal in the frequency domain or to reproduce the continuous signal from these samples.
-\end{enumerate}
+The formula for the Discrete Fourier Transform (DFT) is given by:
+\[ X(k) = \sum_{n=0}^{127} \cos(2 \pi f_0 n T) \cdot e^{-j \frac{2\pi}{128}kn} \]
+Values of \(k\) for which \(X(k)\) is different from 0 are those that satisfy \(f_0 n T = \frac{k}{128}\).
 
-\section*{Question 3}
-Consider a continuous time-domain sine wave whose cyclic frequency is 1000Hz, which is defined by \( x(t) = \cos(2 \pi \cdot 1000t + \frac{\pi}{7}) \).
-\begin{enumerate}
-    \item Write the equation for the discrete \( x(n) \) sequence at sampling frequency 4000Hz.
-    \begin{enumerate}
-        \item The discrete sequence \( x(n) \) will be defined as \( x(n) = \cos\left(\frac{5 \pi \cdot 1000n}{4000} + \frac{\pi}{7}\right) \) which simplifies to \( x(n) = \cos\left(\frac{\pi}{2} \cdot n + \frac{\pi}{7}\right) \).
-    \end{enumerate}
-    \item Write the equation for the discrete \( x(n) \) sequence at sampling frequency 1500Hz.
-    \begin{enumerate}
-        \item The discrete sequence \( x(n) \) will be defined as \( x(n) = \cos\left(\frac{5 \pi \cdot 1000n}{1500} + \frac{\pi}{7}\right) \) which simplifies to \( x(n) = \cos\left(\frac{4\pi}{3} \cdot n + \frac{\pi}{7}\right) \).
-    \end{enumerate}
-\end{enumerate}
+Given parameters: \(f_0 = 125\) Hz, \(T = 0.5\) ms = 0.0005 s.
 
-\section*{Question 4}
-A signal \( x(t) = \cos(5 \pi \cdot 400t) \) is sampled at the sampling rate \( f_s = 2000\,Hz \). The sampled signal \( x(n) \) can be expressed as a sum of a positive rotating and a negative rotating pointer.
-\begin{enumerate}
-    \item How many samples does it take for the pointers to make a full rotation?
-    \begin{enumerate}
-        \item Considering the frequency of the signal (800Hz) and the sampling rate \( f_s = 2000\,Hz \), it takes \(\frac{f_s}{2 \cdot \text{frequency of the signal}} = \frac{2000}{2 \cdot 800} = 1.25\) samples for the pointers to make a full rotation. Since the number of samples must be an integer, it would take 2 samples for a complete cycle.
-    \end{enumerate}
-    \item How many radians will the pointers change from one sample to the next?
-    \begin{enumerate}
-        \item The frequency of the signal is 800Hz and the sampling rate is 2000Hz, therefore, the phase change between samples can be calculated as \( 2\pi \cdot \frac{800}{2000} = 0.8\pi \) radians. Hence, the pointers will change by \( 0.8\pi \) radians from one sample to the next.
-    \end{enumerate}
-\end{enumerate}
+Substitute into the equation: \(f_0 n T = \frac{k}{128}\).
+\[ 125 \times n \times 0.0005 = \frac{k}{128} \]
+
+Solve for \(k\):
+\[ n = \frac{k}{(125 \times 0.0005) \times 128} \]
+
+Values of \(n\) are integers. Let's find the values of \(k\). 
+
+\textbf{b) What is the frequency resolution, i.e., the frequency distance between the calculated values in a 128-point DFT? Suppose the sequence is sampled with 2000 Hz.}
+
+The frequency resolution in a 128-point DFT is given by:
+\[ \text{Frequency Resolution} = \frac{\text{Sampling Frequency}}{\text{Number of Points in DFT}} \]
+Suppose the sequence is sampled with 2000 Hz.
+
+Calculate the frequency resolution:
+\[ \text{Frequency Resolution} = \frac{2000}{128} \text{ Hz} = 15,625 \text{ Hz} \]
+
+\textbf{c) A signal is sampled with a 2000 Hz sampling frequency. How long a section of the signal (measured in time) must be analyzed to determine the frequency content with better than 1 Hz frequency resolution?}
+
+To determine the frequency content with better than 1 Hz resolution when sampled with a 2000 Hz frequency, the time duration \(T_{\text{analyze}}\) is given by:
+\[ T_{\text{analyze}} = \frac{1}{\text{Frequency Resolution}} \]
+
+Calculate \(T_{\text{analyze}}\):
+\[ T_{\text{analyze}} = \frac{1}{15,625} \approx 0.000064 \text{ s} \]
+
+\section*{Problem 2}
+
+\textbf{a) Find with an 8-sample DFT of the unit impulse, \(x(n) = 1, 0, 0, 0, 0, 0, 0, 0, \ldots\).}
+
+\[ X(k) = \sum_{n=0}^{7} x(n) \cdot e^{-j \frac{2\pi}{8}kn} \]
+
+Calculate the 8-sample DFT:
+\[ X(k) = 1 + 0 + 0 + \ldots = 1 \]
+
+\textbf{b) Explain the result.}
+
+The result shows that the 8-sample DFT of the unit impulse sequence has a non-zero value only at \(k = 0\). This is expected as the unit impulse has all its energy concentrated at \(n = 0\), and the DFT is essentially calculating the sum of the sequence.
+
+\textbf{c) What result do you expect if you take a 128-sample DFT of the unit impulse sequence?}
+
+\[ \text{Frequency Resolution} = \frac{\text{Sampling Frequency}}{128} \]
+
+For a 128-sample DFT of the unit impulse sequence, the frequency resolution will be \( \frac{2000}{128} \) Hz.
+
+\section*{Problem 3}
+
+\textbf{a) \(X_1(k) = \text{DFT}\{x_1(n)\}\). Find \(X_1(k)\) for the sequence \(x_1(n) = \{2, 2, 0, 0, 2, 2, 0, 0\}\).}
+
+Calculate \(X_1(k)\) for the given sequence:
+
+\[ X_1(k) = \sum_{n=0}^{7} x_1(n) \cdot e^{-j \frac{2\pi}{8}kn} \]
+\[ X_1(k) = 2 + 2 + 0 + 0 + 2 + 2 + 0 + 0 = 8 \]
+
+\textbf{b) The sequence \(x_1(n)\) is sampled with a sampling frequency of 1000 Hz. What frequency components in the range \(-\frac{\text{fs}}{2}\) and \(+\frac{\text{fs}}{2}\) are present in \(x(n)\)?}
+
+\[ f = \frac{k \cdot \text{fs}}{N} \]
+
+For the given sequence and sampling frequency:
+
+\[ f = \frac{k \cdot 1000}{8} \]
+\[ f = \frac{k \cdot 125}{1} \]
+
+The frequency components present are at multiples of 125 Hz: -500 Hz, -375 Hz, -250 Hz, -125 Hz, 0 Hz, 125 Hz, 250 Hz, 375 Hz.
+
+\textbf{c) Suppose \(x_1(n)\) is a sampled version of \(x_1(t)\) and \(x_1(t)\) is low pass limited to \(\frac{\text{fs}}{2}\). Write the expression for \(x(t)\) from what you found in a) and b) above.}
+
+Since \(x_1(t)\) is low pass limited to \(\frac{\text{fs}}{2}\), the frequency components present in \(x(t)\) are the same as in \(x(n)\). Therefore, \(x(t)\) can be expressed as a sum of sinusoids with frequencies at multiples of 125 Hz.
 
 \end{document}
