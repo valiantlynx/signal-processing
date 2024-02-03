@@ -71,3 +71,10 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+# deploy to fly
+1. install flyctl
+2. run ```flyctl auth login```
+3. run ```flyctl launch```
+4. run ```flyctl deploy```
+5. run ```flyctl open```
