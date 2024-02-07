@@ -130,4 +130,4 @@ services:
 # with each other, by using their container name as a hostname
 networks:
   valiantlynx-turborepo:
-    external: true
+    external: false
