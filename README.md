@@ -1,132 +1,77 @@
-[![Animevariant](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/svelte-manga.yaml/badge.svg)](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/svelte-manga.yaml)
-[![breath-first-search](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/breath-first-search.yaml/badge.svg)](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/breath-first-search.yaml)
-[![chatbot-ai](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/chatbot-ai.yaml/badge.svg)](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/chatbot-ai.yaml)
-[![depth-first-search](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/depth-first-search.yaml/badge.svg)](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/depth-first-search.yaml)
-[![issues](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/issues.yaml/badge.svg)](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/issues.yaml)
-[![Lint Code Base](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/linter.yaml/badge.svg)](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/linter.yaml)
-[![weather](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/weather.yml/badge.svg)](https://github.com/valiantlynx/valiantlynx-turborepo/actions/workflows/weather.yml)
+# Signal Processing
 
-# Animevariant
+## Overview
 
-## Quick Start
+Welcome to the Signal Processing Class repository! This repository contains resources and materials for the UIA Signal Processing course.
 
-## Included Packages and Tools
+## Table of Contents
 
-This Turborepo includes the following packages/apps and utilities:
-
-### Apps and Packages
-
-`docs`: A documentation app with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/)
-`web`: A web app with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/)
-`ui`: A React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-`svelte-docs`: A documentation app with [SvelteKit](https://kit.svelte.dev/)
-`svelte-manga`: A web app with [SvelteKit](https://kit.svelte.dev/)
-`svelte-ui`: A Svelte component library shared by both `svelte-web` and `svelte-docs`
-`eslint-config-custom`: ESLint configurations (includes `eslint-config-next`, `eslint-plugin-svelte`, and `eslint-config-prettier`)
-`tsconfig`: `tsconfig.json` files used throughout the monorepo
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Building `packages/ui`
-
-This example is set up to build `packages/ui` and output the transpiled source and compiled styles to `dist/`. This is done to share one `tailwind.config.js` easily and ensure that only the CSS used by the current application and its dependencies is generated.
-An alternative is to consume `packages/ui` directly from source without building. If you choose this option, update your `tailwind.config.js` to recognize your package locations, so it can find all usages of the `tailwindcss` class names. For instance:
-
-```js
-  content: [
-    // App content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // Include packages if not transpiling
-    "../../packages/**/*.{js,ts,jsx,tsx}",
-  ],
-```
-
-### Utilities
-
-This Turborepo includes a set of useful tools:
-[Tailwind CSS](https://tailwindcss.com/) for styling
-[TypeScript](https://www.typescriptlang.org/) for static type checking
-[ESLint](https://eslint.org/) for code linting
-[Prettier](https://prettier.io/) for code formatting
-
-# Turborepo Docker Starter
-
-This repository is your Turborepo Docker starter pack. It's designed to help you quickly set up a Turborepo project that includes a Docker-based deployment workflow.
+- [Signal Processing](#signal-processing)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Cloning the Repository](#cloning-the-repository)
+    - [Installation](#installation)
+  - [Course Content](#course-content)
+  - [Prerequisites](#prerequisites)
+  - [Resources](#resources)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Getting Started
 
-1. Build the Docker containers and start the applications:
+### Cloning the Repository
 
-```sh
-  docker network create minfuel-turborepo
-  COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build
-  docker-compose -f docker-compose.yml up -d
+To get started with the materials in this repository, clone it to your local machine using the following command:
 
+```bash
+git clone https://github.com/valiantlynx/signal-processing.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000/) in your browser.
+### Installation
 
-2. To shut down all running containers:
+[Provide instructions on any software or dependencies needed for the course.]
 
-```sh
-  docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
+## Course Content
 
-```
+[Provide an overview of the topics covered in the course. Include links to specific folders or files containing lecture notes, assignments, and other relevant materials.]
 
-### Remote Caching
+- Week 1: Introduction to Signal Processing
+  - [Lecture Slides](/lectures/week1/slides.pdf)
+  - [Assignment 1](/assignments/week1/assignment.pdf)
 
-This Turborepo includes optional remote caching. In the Dockerfiles of the apps, uncomment the build arguments for `TURBO_TEAM` and `TURBO_TOKEN`. Then, pass these build arguments to your Docker build.
-You can test this behavior using a command like:
-`docker build -f apps/svelte-manga/Dockerfile . --build
+- Week 2: Signal Representation and Transformation
+  - [Lecture Notes](/lectures/week2/notes.md)
+  - [Lab Exercises](/labs/week2/exercises.py)
 
-### adding new projects with their own git history
-```sh
-git subtree add --prefix=apps/anime-site https://github.com/valiantlynx/anime-site.git master --squash
-git subtree pull --prefix=apps/anime-site https://github.com/valiantlynx/anime-site.git master --squash
-git subtree push --prefix=apps/anime-site https://github.com/valiantlynx/anime-site.git master
+[Continue with a similar structure for subsequent weeks.]
 
-```
+## Prerequisites
 
-### publishing packages 
-```sh
-yarn publish:packages // this will publish all packages that are not private
-```
+[List any prerequisites that students should be familiar with before taking this course.]
 
-free svg icons: https://www.svgrepo.com/svg/122485/car-placeholder
+- Basic understanding of mathematics, including calculus and linear algebra.
+- Programming skills in [specific language] are highly recommended.
 
+## Resources
 
+[List additional resources that can complement the course materials.]
 
-Kasm UI Login Credentials
+- [Signal Processing Toolbox Documentation](https://www.mathworks.com/help/signal/)
+- [Coursera - Digital Signal Processing](https://www.coursera.org/specializations/digital-signal-processing)
 
-------------------------------------
-  username: admin@kasm.local
-  password: AkMe6YHYqhMPX
-------------------------------------
-  username: user@kasm.local
-  password: cYEKUucyE6WjB
-------------------------------------
+## Contributing
 
-Kasm Database Credentials
-------------------------------------
-  username: kasmapp
-  password: 9sfV0yHRigy9IyuMAh5n
-------------------------------------
+[Explain how others can contribute to the repository. This may include bug reporting, suggesting improvements, or submitting new materials.]
 
-Kasm Redis Credentials
-------------------------------------
-  password: LA5EXvzADgRqocHBTe0J
-------------------------------------
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/new-material`)
+3. Make changes and commit (`git commit -am 'Add new material'`)
+4. Push to the branch (`git push origin feature/new-material`)
+5. Create a new Pull Request
 
-Kasm Manager Token
-------------------------------------
-  password: 7IgC7IPEPFgsDvK6Q8ol
-------------------------------------
+## License
 
-Kasm Guac Token
-------------------------------------
-  password: qGGiIOlrbSXo3A1iaCRhLM
-------------------------------------
+[Specify the license under which the materials are distributed. Common choices include MIT, Apache, or GNU licenses.]
 
-Service Registration Token
-------------------------------------
-  password: 9tGSauaLhAXMVaOmuXw6
-------------------------------------
+This project is licensed under the [MIT License](LICENSE).
