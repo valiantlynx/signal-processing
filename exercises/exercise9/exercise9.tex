@@ -106,27 +106,88 @@ where $n$ is the order of the filter, $\Omega$ is the frequency, and $\Omega_c$ 
 
 \section*{(c) Order of the Digital Butterworth Filter for Specified Attenuation}
 
-Given:
-\begin{itemize}
-    \item Cut-off frequency, $f_c = 500 \, \text{Hz}$
-    \item Attenuation at $f = 2 \, \text{kHz}$, $A = 60 \, \text{dB}$
-    \item Sampling frequency, $f_s = 5 \, \text{kHz}$
-\end{itemize}
+To determine the necessary order of a digital Butterworth filter that provides at least 60 dB attenuation at 2 kHz with a cut-off frequency of 500 Hz and a sampling frequency of 5 kHz, we use the formula(attenuation formula):
 
-The attenuation in dB is given by $A = 10 \log_{10}\left(1 + \left(\frac{f}{f_c}\right)^{2n}\right)$, solving for $n$ gives the filter order required.
+\[ A(\omega) = 10 \log_{10}\left(1 + \left(\frac{\omega}{\omega_c}\right)^{2n}\right) \]
+
+where $A(\omega)$ is the attenuation in dB, $\omega$ is the frequency where the attenuation is specified, $\omega_c$ is the cut-off frequency, and $n$ is the order of the filter. Given $A(2 \, \text{kHz}) = 60 \, \text{dB}$ and $f_c = 500 \, \text{Hz}$, we need to solve for $n$. Rearranging the equation and substituting $\omega = 2 \, \text{kHz}$, we get:
+
+\[ n = \frac{\log_{10}\left(\left(10^{\frac{A}{10}} - 1\right)\right)}{2 \log_{10}\left(\frac{\omega}{\omega_c}\right)} \]
+
+Substituting $A = 60 \, \text{dB}$, $\omega = 2000 \, \text{Hz}$, and $\omega_c = 500 \, \text{Hz}$ into the formula, we calculate the required order $n$.
 
 \section*{(d) Filter Order with Sampling Rate of 10 kHz}
 
-Repeating the calculation from part (c) with $f_s = 10 \, \text{kHz}$, we find the new filter order necessary to achieve the same specifications.
+To find the necessary filter order with a sampling rate of 10 kHz while maintaining the specification of 60 dB attenuation at 2 kHz and a cut-off frequency of 500 Hz, we repeat the calculation from part (c) with the new sampling frequency. The order of the filter is independent of the sampling rate for the analog prototype; however, due to the frequency warping effects of the bilinear transformation, the digital filter's (effective) cut-off frequency will change, so we pre-warp the analog cut-off frequency before designing the digital filter:
+
+\[ \omega_c' = \frac{2}{T} \tan\left(\frac{\omega_c T}{2}\right) \]
+
+where $T = \frac{1}{f_s}$ and $f_s = 10 \, \text{kHz}$. After pre-warping, we use the same formula as in part (c) to determine the order of the filter. simple
 
 \section*{(e) Magnitudes of Frequency Components after Filtering}
 
-Given $x(n) = \cos(\pi n / 5) + \cos(2\pi n / 5)$, we need to find the output magnitudes of these components after passing through the filter designed in part (c). This involves evaluating the filter's frequency response at the given frequencies and applying it to the magnitudes of the input components.
+The sequence to be filtered is given by $x(n) = \cos(\pi n / 5) + \cos(2\pi n / 5)$. For a sampling rate $f_s = 5$ kHz, the frequencies of the components are $f_1 = \frac{f_s}{10} = 500$ Hz and $f_2 = \frac{f_s}{5} = 1000$ Hz. The filter from part (c) is a digital Butterworth filter with a cut-off frequency of 500 Hz. We need to determine the magnitudes of the two frequency components after filtering.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{frequency_response.png}
-    \caption{Magnitude frequency response of the analog and digital Butterworth filters.}
-\end{figure}
+The magnitude response of a Butterworth filter can be expressed as:
 
+\[
+|H(j\Omega)| = \frac{1}{\sqrt{1 + \left(\frac{\Omega}{\Omega_c}\right)^{2n}}}
+\]
+
+where:
+\begin{itemize}
+    \item $\Omega$ is the frequency in rad/s,
+    \item $\Omega_c$ is the cut-off frequency in rad/s,
+    \item $n$ is the order of the filter.
+\end{itemize}
+
+For the digital filter, the frequency response at a discrete frequency $\omega$ can be found using the z-transform where $z = e^{j\omega}$, and $\omega = \frac{2\pi f}{f_s}$ for a frequency $f$. 
+
+To achieve at least 60dB attenuation at 2 kHz, we first convert the attenuation to a linear scale:
+
+\[
+A = -60 \, \text{dB} \implies 20 \log_{10}(M) = -60 \implies M = 10^{-\frac{60}{20}} = 10^{-3}
+\]
+
+Here, $M$ represents the magnitude of the frequency component at 2 kHz after filtering.
+
+Now, we calculate the required order of the filter using the attenuation formula:
+
+\[
+M = \frac{1}{\sqrt{1 + \left(\frac{f_2}{f_c}\right)^{2n}}}
+\]
+
+Solving for $n$, we find that:
+
+\[
+10^{-3} = \frac{1}{\sqrt{1 + \left(\frac{2000}{500}\right)^{2n}}}
+\]
+
+\[
+\Rightarrow 1 + \left(\frac{2000}{500}\right)^{2n} = 10^{6}
+\]
+
+\[
+\Rightarrow \left(\frac{2000}{500}\right)^{2n} = 10^{6} - 1
+\]
+
+\[
+\Rightarrow 2^{2n} = 10^{6} - 1
+\]
+
+\[
+\Rightarrow 4^{n} = 10^{6} - 1
+\]
+
+\[
+\Rightarrow n \log(4) = 6 \log(10) - \log(10^{6} - 1)
+\]
+
+\[
+\Rightarrow n = \frac{6 \log(10) - \log(10^{6} - 1)}{\log(4)}
+\]
+
+Given the filter order $n$, we can evaluate the frequency response of the filter at the frequencies $f_1$ and $f_2$. For $f_1 = 500$ Hz, which is the cut-off frequency, the magnitude is $|H(j\Omega_{c})| = 0.707$. For $f_2 = 1000$ Hz, since it is beyond the cut-off frequency, the output magnitude will be less than that of $f_1$ due to the filter's attenuation properties.
+
+The output magnitudes of $x(n)$ after filtering are then given by $0.707$ times the input magnitudes at $f_1$ and a significantly reduced magnitude at $f_2$, which can be calculated using the filter's magnitude response formula at $f_2$.
 \end{document}
