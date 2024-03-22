@@ -116,6 +116,13 @@ where $A(\omega)$ is the attenuation in dB, $\omega$ is the frequency where the 
 
 Substituting $A = 60 \, \text{dB}$, $\omega = 2000 \, \text{Hz}$, and $\omega_c = 500 \, \text{Hz}$ into the formula, we calculate the required order $n$.
 
+% $$60 = 10\log_{10}\left(\frac{1}{1 + (2000/500)^{2n}}\right)$$
+
+% Solving for $n$, we get:
+
+% $$n = 3$$
+
+Therefore, the filter order should be 3.
 \section*{(d) Filter Order with Sampling Rate of 10 kHz}
 
 To find the necessary filter order with a sampling rate of 10 kHz while maintaining the specification of 60 dB attenuation at 2 kHz and a cut-off frequency of 500 Hz, we repeat the calculation from part (c) with the new sampling frequency. The order of the filter is independent of the sampling rate for the analog prototype; however, due to the frequency warping effects of the bilinear transformation, the digital filter's (effective) cut-off frequency will change, so we pre-warp the analog cut-off frequency before designing the digital filter:
@@ -124,70 +131,30 @@ To find the necessary filter order with a sampling rate of 10 kHz while maintain
 
 where $T = \frac{1}{f_s}$ and $f_s = 10 \, \text{kHz}$. After pre-warping, we use the same formula as in part (c) to determine the order of the filter. simple
 
+% $$60 = 10\log_{10}\left(\frac{1}{1 + (2000/1000)^{2n}}\right)$$
+
+% Solving for $n$, we get:
+
+% $$n = 2$$
+
+% Therefore, the filter order should be 2.
 \section*{(e) Magnitudes of Frequency Components after Filtering}
 
-The sequence to be filtered is given by $x(n) = \cos(\pi n / 5) + \cos(2\pi n / 5)$. For a sampling rate $f_s = 5$ kHz, the frequencies of the components are $f_1 = \frac{f_s}{10} = 500$ Hz and $f_2 = \frac{f_s}{5} = 1000$ Hz. The filter from part (c) is a digital Butterworth filter with a cut-off frequency of 500 Hz. We need to determine the magnitudes of the two frequency components after filtering.
+The output of the filter is calculated by:
 
-The magnitude response of a Butterworth filter can be expressed as:
+$$y(n) = x(n) * h(n)$$
 
-\[
-|H(j\Omega)| = \frac{1}{\sqrt{1 + \left(\frac{\Omega}{\Omega_c}\right)^{2n}}}
-\]
+where $h(n)$ is the impulse response of the filter.
 
-where:
-\begin{itemize}
-    \item $\Omega$ is the frequency in rad/s,
-    \item $\Omega_c$ is the cut-off frequency in rad/s,
-    \item $n$ is the order of the filter.
-\end{itemize}
+The impulse response of a 3rd order Butterworth low-pass filter is :
 
-For the digital filter, the frequency response at a discrete frequency $\omega$ can be found using the z-transform where $z = e^{j\omega}$, and $\omega = \frac{2\pi f}{f_s}$ for a frequency $f$. 
+$$h(n) = \frac{1}{\pi}\left(\frac{\sin(2000\pi nT)}{2000\pi nT} - \frac{\sin(4000\pi nT)}{4000\pi nT} + \frac{\sin(6000\pi nT)}{6000\pi nT}\right)$$
 
-To achieve at least 60dB attenuation at 2 kHz, we first convert the attenuation to a linear scale:
+The magnitudes of the two frequency components out of the filter after the output has stabilized are given by:
 
-\[
-A = -60 \, \text{dB} \implies 20 \log_{10}(M) = -60 \implies M = 10^{-\frac{60}{20}} = 10^{-3}
-\]
+$$|Y(0)| = |X(0)| \cdot |H(0)| = 1 \cdot \left|\frac{1}{\pi}\left(\frac{1}{0} - \frac{1}{0} + \frac{1}{0}\right)\right| = \infty$$
 
-Here, $M$ represents the magnitude of the frequency component at 2 kHz after filtering.
+$$|Y(1)| = |X(1)| \cdot |H(1)| = 1 \cdot \left|\frac{1}{\pi}\left(\frac{\sin(2000\pi T)}{2000\pi T} - \frac{\sin(4000\pi T)}{4000\pi T} + \frac{\sin(6000\pi T)}{6000\pi T}\right)\right| \approx 0.707$$
 
-Now, we calculate the required order of the filter using the attenuation formula:
-
-\[
-M = \frac{1}{\sqrt{1 + \left(\frac{f_2}{f_c}\right)^{2n}}}
-\]
-
-Solving for $n$, we find that:
-
-\[
-10^{-3} = \frac{1}{\sqrt{1 + \left(\frac{2000}{500}\right)^{2n}}}
-\]
-
-\[
-\Rightarrow 1 + \left(\frac{2000}{500}\right)^{2n} = 10^{6}
-\]
-
-\[
-\Rightarrow \left(\frac{2000}{500}\right)^{2n} = 10^{6} - 1
-\]
-
-\[
-\Rightarrow 2^{2n} = 10^{6} - 1
-\]
-
-\[
-\Rightarrow 4^{n} = 10^{6} - 1
-\]
-
-\[
-\Rightarrow n \log(4) = 6 \log(10) - \log(10^{6} - 1)
-\]
-
-\[
-\Rightarrow n = \frac{6 \log(10) - \log(10^{6} - 1)}{\log(4)}
-\]
-
-Given the filter order $n$, we can evaluate the frequency response of the filter at the frequencies $f_1$ and $f_2$. For $f_1 = 500$ Hz, which is the cut-off frequency, the magnitude is $|H(j\Omega_{c})| = 0.707$. For $f_2 = 1000$ Hz, since it is beyond the cut-off frequency, the output magnitude will be less than that of $f_1$ due to the filter's attenuation properties.
-
-The output magnitudes of $x(n)$ after filtering are then given by $0.707$ times the input magnitudes at $f_1$ and a significantly reduced magnitude at $f_2$, which can be calculated using the filter's magnitude response formula at $f_2$.
+the magnitude of the DC component is infinite, and the magnitude of the 1 kHz component is approximately 0.707.
 \end{document}
