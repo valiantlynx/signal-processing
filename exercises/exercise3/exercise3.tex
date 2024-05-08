@@ -1,150 +1,70 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[12pt]{article}
 \usepackage{amsmath}
-\usepackage{geometry}
-\usepackage{listings}
-\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amssymb}
 
-% Define colors for the code
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-% Define the style for the code listing
-\lstdefinestyle{pythonstyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{codepurple},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{blue},
-    basicstyle=\ttfamily\small,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2
-}
-
-\geometry{a4paper, margin=1in}
-
-\title{Exercise 3}
+\title{Discrete Mathematics Assignment 3}
 \author{Gormery K. Wanjiru}
 \date{\today}
 
 \begin{document}
-
 \maketitle
+
 \section*{Problem 1}
+How many solutions are there to the equation \(x_1 + x_2 + x_3 + x_4 = 10\) if \(x_1, x_2, x_3, x_4\) are nonnegative integers?
 
-\textbf{a) A signal \(x_1(t) = \cos(2 \pi f_0 t)\) where \(f_0 = 125\) Hz, is sampled with spacing \(T = 0.5\) ms between the samples, and the first sample is taken at \(t = 0\). Suppose we calculate a 128-point DFT of the first 128 samples of \(x_1(t)\). For what values of \(k\), will \(X(k)\) be different from 0?}
-
-The formula for the Discrete Fourier Transform (DFT) is given by:
-\[ X(k) = \sum_{n=0}^{127} \cos(2 \pi f_0 n T) \cdot e^{-j \frac{2\pi}{128}kn} \]
-Values of \(k\) for which \(X(k)\) is different from 0 are those that satisfy \(f_0 n T = \frac{k}{128}\).
-
-Given parameters: \(f_0 = 125\) Hz, \(T = 0.5\) ms = 0.0005 s.
-
-Substitute into the equation: \(f_0 n T = \frac{k}{128}\).
-\[ 125 \times n \times 0.0005 = \frac{k}{128} \]
-
-Solve for \(k\):
-\[ n = \frac{k}{(125 \times 0.0005) \times 128} \]
-\[ n = \frac{k}{0.016} \]
-\[ k = 0.016n \]
-
-Since \(k\) must be an integer, let \(n\) take integer values. Therefore,
-to get this numbers this student  used the following simple python code:
-\begin{lstlisting}[language=Python, style=pythonstyle, caption={print the array of k values}]
-    # Given parameters
-    f0 = 125  # Hz
-    T = 0.0005  # s
-    N = 128
-    
-    # Solve for k
-    k_values = [n * N // (f0 * T * 128) for n in range(N)]
-    
-    print(k_values)
-\end{lstlisting}
-These values represent the indices in the DFT where the corresponding \(X(k)\) will be different from 0.\\
-\(k\) can take on integer values \(0, 16, 32, \ldots, 2016\)
-
-
-
-\textbf{b) What is the frequency resolution, i.e., the frequency distance between the calculated values in a 128-point DFT? Suppose the sequence is sampled with 2000 Hz.}
-
-The frequency resolution in a 128-point DFT is given by:
-\[ \text{Frequency Resolution} = \frac{\text{Sampling Frequency}}{\text{Number of Points in DFT}} \]
-Suppose the sequence is sampled with 2000 Hz.
-
-Calculate the frequency resolution:
-\[ \text{Frequency Resolution} = \frac{2000}{128} \text{ Hz} = 15,625 \text{ Hz} \]
-
-\textbf{c) A signal is sampled with a 2000 Hz sampling frequency. How long a section of the signal (measured in time) must be analyzed to determine the frequency content with better than 1 Hz frequency resolution?}
-
-To determine the frequency content with better than 1 Hz resolution when sampled with a 2000 Hz frequency, the time duration \(T_{\text{analyze}}\) is given by:
-\[ T_{\text{analyze}} = \frac{1}{\text{Frequency Resolution}} \]
-
-Calculate \(T_{\text{analyze}}\):
-\[ T_{\text{analyze}} = \frac{1}{15,625} \approx 0.000064 \text{ s} \]
+\textbf{Solution:}
+This problem is solved using the stars and bars theorem. The formula to find the number of nonnegative integer solutions is given by:
+\[ \binom{n + k - 1}{k - 1} \]
+where \(n = 10\) and \(k = 4\).
+\[ \binom{10 + 4 - 1}{4 - 1} = \binom{13}{3} = 286 \]
 
 \section*{Problem 2}
+Three officers—a president, a treasurer, and a secretary—are to be chosen from among four people: Ann, Bob, Cyd, and Dan. Bob is not qualified to be treasurer and Cyd is not qualified to be secretary. How many ways can the officers be chosen?
 
-\textbf{a) Find with an 8-sample DFT of the unit impulse, \(x(n) = 1, 0, 0, 0, 0, 0, 0, 0, \ldots\).}
-
-\[ X(k) = \sum_{n=0}^{7} x(n) \cdot e^{-j \frac{2\pi}{8}kn} \]
-
-Calculate the 8-sample DFT:
-\[ X(k) = 1 + 0 + 0 + \ldots = 1 \]
-
-\textbf{b) Explain the result.}
-
-The result shows that the 8-sample DFT of the unit impulse sequence has a non-zero value only at \(k = 0\). This is expected as the unit impulse has all its energy concentrated at \(n = 0\), and the DFT is essentially calculating the sum of the sequence.
-
-\textbf{c) What result do you expect if you take a 128-sample DFT of the unit impulse sequence?}
-
-\[ \text{Frequency Resolution} = \frac{\text{Sampling Frequency}}{128} \]
-
-For a 128-sample DFT of the unit impulse sequence, the frequency resolution will be \( \frac{2000}{128} \) Hz.
+\textbf{Solution:}
+\[ \text{Choices for president} = 4 \]
+\[ \text{Choices for treasurer (excluding Bob)} = 3 \]
+\[ \text{Choices for secretary (excluding Cyd)} = 2 \]
+\[ \text{Total ways} = 4 \times 3 \times 2 = 24 \]
 
 \section*{Problem 3}
+Find the minimum number of students needed to guarantee that 10 of them were born on the same day of the week.
 
-\textbf{a) \(X_1(k) = \text{DFT}\{x_1(n)\}\). Find \(X_1(k)\) for the sequence \(x_1(n) = \{2, 2, 0, 0, 2, 2, 0, 0\}\).}
+\textbf{Solution:}
+By the pigeonhole principle:
+\[ \text{Minimum students} = 7 \times 9 + 1 = 64 \]
 
-Calculate \(X_1(k)\) for the given sequence:
+\section*{Problem 4}
+Given sets \(A, B \subseteq U\), \(A \cap B = \varnothing\), \(n(A) = 12\), \(n(B) = 10\), what is the probability that the selection contains 4 elements from \(A\) and 3 from \(B\)?
 
-\[ X_1(k) = \sum_{n=0}^{7} x_1(n) \cdot e^{-j \frac{2\pi}{8}kn} \]
-\[ X_1(k) = 2 + 2 + 0 + 0 + 2 + 2 + 0 + 0 = 8 \]
+\textbf{Solution:}
+\[ \text{Favorable outcomes} = \binom{12}{4} \times \binom{10}{3} \]
+\[ \text{Total outcomes} = \binom{22}{7} \]
+\[ \text{Probability} = \frac{\text{Favorable outcomes}}{\text{Total outcomes}} = \frac{\binom{12}{4} \times \binom{10}{3}}{\binom{22}{7}} \approx 0.3483 \]
 
-\textbf{b) The sequence \(x_1(n)\) is sampled with a sampling frequency of 1000 Hz. What frequency components in the range \(-\frac{\text{fs}}{2}\) and \(+\frac{\text{fs}}{2}\) are present in \(x(n)\)?}
+\section*{Problem 5}
+How many five-person teams contain at most one man from a group of five men and seven women?
 
-\[ f = \frac{k \cdot \text{fs}}{N} \]
+\textbf{Solution:}
+\[ \text{Teams with no men} = \binom{7}{5} \]
+\[ \text{Teams with one man} = \binom{5}{1} \times \binom{7}{4} \]
+\[ \text{Total teams} = \binom{7}{5} + \binom{5}{1} \times \binom{7}{4} = 196 \]
 
-For the given sequence and sampling frequency:
+\section*{Problem 6}
+How many pairs of two distinct integers from the set \(\{1, 2, 3, ..., 100, 101\}\) have a sum that is even?
 
-\[ f = \frac{k \cdot 1000}{8} \]
-\[ f = \frac{k \cdot 125}{1} \]
+\textbf{Solution:}
+\[ \text{Even pairs (from even numbers)} = \binom{50}{2} \]
+\[ \text{Odd pairs (from odd numbers)} = \binom{51}{2} \]
+\[ \text{Total even pairs} = \binom{50}{2} + \binom{51}{2} = 2500 \]
 
-The frequency components present are at multiples of 125 Hz: -500 Hz, -375 Hz, -250 Hz, -125 Hz, 0 Hz, 125 Hz, 250 Hz, 375 Hz.
+\section*{Problem 7}
+Eight people are attending the movies together, but two of them do not want to sit next to each other. How many ways can they be seated?
 
-\textbf{c) Suppose \(x_1(n)\) is a sampled version of \(x_1(t)\) and \(x_1(t)\) is low pass limited to \(\frac{\text{fs}}{2}\). Write the expression for \(x(t)\) from what you found in a) and b) above.}
-
-Since \(x_1(t)\) is low pass limited to \(\frac{\text{fs}}{2}\), the frequency components present in \(x(t)\) are the same as in \(x(n)\). Therefore, \(x(t)\) can be expressed as a sum of sinusoids with frequencies at multiples of 125 Hz.
-
-The expression for \(x(t)\) is given by:
-\[ x(t) = \sum_{k=0}^{7} X_1(k) \cdot e^{j \frac{2\pi}{8}kt} \]
-Substitute the calculated values of \(X_1(k)\):
-\[ x(t) = 8 \cdot e^{j \frac{2\pi}{8} \cdot 0 \cdot t} + 8 \cdot e^{j \frac{2\pi}{8} \cdot 1 \cdot t} + \ldots + 8 \cdot e^{j \frac{2\pi}{8} \cdot 7 \cdot t} \]
-
-Simplify the expression based on the frequencies calculated in part b):
-
-\[ x(t) = 8 + 8 \cdot e^{j \frac{2\pi}{8} \cdot 1 \cdot t} + \ldots + 8 \cdot e^{j \frac{2\pi}{8} \cdot 7 \cdot t} \]
-
-This expression represents the sampled signal \(x_1(n)\) in the continuous-time domain.
+\textbf{Solution:}
+\[ \text{Total arrangements} = 8! \]
+\[ \text{Unacceptable arrangements (two specific people next to each other). I count them as a unit} = 2 \times 7! \]
+\[ \text{Acceptable arrangements} = 8! - 2 \times 7! = 30240 \] Its 2 times the Unacceptable arrangements because the two can switch positions. Albeit sit together in two different ways
 
 \end{document}
